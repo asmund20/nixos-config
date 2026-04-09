@@ -7,6 +7,9 @@
         repeat_delay = 600;
         sensitivity = -0.7;
       };
+      cursor = {
+        hide_on_key_press = true;
+      };
     };
   };
 }
