@@ -20,9 +20,6 @@
   boot.loader.limine = {
     enable = true;
     secureBoot.enable = true;
-    extraConfig = ''
-      default_entry: Windows
-    '';
     extraEntries = ''
       /Windows
       comment: Windows
