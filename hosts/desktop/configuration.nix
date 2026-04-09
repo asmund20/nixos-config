@@ -16,10 +16,13 @@
   # Bootloader.
   boot.loader.limine.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot";
+
   boot.loader.limine.extraConfig = ''
     :Windows
         COMMENT=Windows
         PROTOCOL=chainload
+        IMAGE_PATH=\EFI\Microsoft\Boot\bootmgfw.efi
         PART_UUID=d6c351ce-c388-42eb-bdcc-c70bef8e10bf
   '';
 
