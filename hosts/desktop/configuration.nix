@@ -21,7 +21,7 @@
   boot.loader.limine.extraEntries = ''
     /Windows
     comment: Windows
-    protocol: chainload
+    protocol: efi
     image_path: \EFI\Microsoft\Boot\bootmgfw.efi
     part_uuid: d6c351ce-c388-42eb-bdcc-c70bef8e10bf
   '';
