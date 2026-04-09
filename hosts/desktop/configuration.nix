@@ -128,6 +128,7 @@
     nil
     pkgs.nixfmt
     tinymist
+    haskell-language-server
   ];
 
   environment.shells = [
