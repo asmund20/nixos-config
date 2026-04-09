@@ -8,6 +8,7 @@
     environmentVariables = {
       PROMPT_COMMAND_RIGHT = "";
     };
+    extraConfig = builtins.readFile ./git-completions.nu;
 
     shellAliases = {
       # Git stuff
