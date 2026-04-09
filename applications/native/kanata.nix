@@ -98,7 +98,7 @@
             ;; Nav layer
             TERMINAL  (multi lmet ret)
             CLOSE     (multi lmet w)
-            BROWSER   (multi lmet lsft b)
+            BROWSER   (multi lmet b)
            
             ;; Symbols in number-layer
             grv (multi lsft grave)    ;; `
