@@ -19,7 +19,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.limine = {
     enable = true;
-    secureboot.enable = true;
+    secureBoot.enable = true;
     extraConfig = ''
       default_entry = Windows
     '';
