@@ -56,11 +56,11 @@
       style = ./style.css;
     };
   };
-  wayland.windowManager.hyprland = {
-    settings = {
-      "exec-once" = [
-        "waybar"
-      ];
-    };
-  };
+  # wayland.windowManager.hyprland = {
+  #   settings = {
+  #     "exec-once" = [
+  #       "waybar"
+  #     ];
+  #   };
+  # };
 }
