@@ -22,7 +22,7 @@
     /Windows
     comment: Windows
     protocol: efi
-    image_path: \EFI\BOOT\BOOTX64.EFI
+    image_path: \efi\boot\bootx64.efi
     part_uuid: d6c351ce-c388-42eb-bdcc-c70bef8e10bf
   '';
 
