@@ -2,40 +2,32 @@
   programs = {
     waybar = {
       enable = true;
-      settings.mainBar = {
-        layer = "top";
-        position = "top";
-        height = 30;
-        modules-left = [
-          "sway/workspaces"
-          "sway/mode"
-        ];
-        modules-center = [ "sway/window" ];
-        modules-right = [
-          "battery"
-          "clock"
-        ];
-        "sway/window" = {
-          "max-length" = 50;
-        };
-        battery = {
-          "format" = "{capacity}% {icon}";
-          "format-icons" = [
-            ""
-            ""
-            ""
-            ""
-            ""
+      settings = {
+        mainBar = {
+          layer = "top";
+          position = "top";
+          height = 30;
+          output = [
+            "eDP-1"
+            "HDMI-A-1"
           ];
-        };
-        "clock" = {
-          "format-alt" = "{ :%a, %d. %b  %H:%M}";
-        };
-        "sway/workspaces" = {
-          all-outputs = true;
-          disable-scroll = true;
-        };
+          modules-left = [
+            "sway/workspaces"
+            "sway/mode"
+            "wlr/taskbar"
+          ];
+          modules-center = [ "sway/window" ];
+          modules-right = [
+            "mpd"
+            "custom/mymodule#with-css-id"
+            "temperature"
+          ];
 
+          "sway/workspaces" = {
+            disable-scroll = true;
+            all-outputs = true;
+          };
+        };
       };
     };
   };
