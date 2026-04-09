@@ -18,12 +18,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
 
-  boot.loader.limine.extraConfig = ''
-    :Windows
-        COMMENT=Windows
-        PROTOCOL=chainload
-        IMAGE_PATH=\EFI\Microsoft\Boot\bootmgfw.efi
-        PART_UUID=d6c351ce-c388-42eb-bdcc-c70bef8e10bf
+  boot.loader.limine.extraEntries = ''
+    /Windows
+    comment: Windows
+    protocol: chainload
+    image_path: \EFI\Microsoft\Boot\bootmgfw.efi
+    part_uuid: d6c351ce-c388-42eb-bdcc-c70bef8e10bf
   '';
 
   networking.hostName = "nixos"; # Define your hostname.
