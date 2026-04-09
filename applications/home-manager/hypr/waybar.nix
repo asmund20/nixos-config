@@ -12,22 +12,22 @@
         ];
         modules-center = [ "sway/window" ];
         modules-right = [
-          "battery"
+          # "battery"
           "clock"
         ];
         "sway/window" = {
           "max-length" = 50;
         };
-        battery = {
-          "format" = "{capacity}% {icon}";
-          "format-icons" = [
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
-        };
+        # battery = {
+        #   "format" = "{capacity}% {icon}";
+        #   "format-icons" = [
+        #     ""
+        #     ""
+        #     ""
+        #     ""
+        #     ""
+        #   ];
+        # };
         "clock" = {
           "format-alt" = "{ :%a, %d. %b  %H:%M}";
         };
