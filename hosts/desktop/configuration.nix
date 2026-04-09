@@ -122,9 +122,10 @@
     typst
     tree
 
-    # nix lsp and formatter
+    # lsps
     nil
     pkgs.nixfmt
+    tinymist
   ];
 
   environment.shells = [
