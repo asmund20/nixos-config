@@ -10,6 +10,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
+    ../../applications/native/kanata.nix
     ../../applications/native/zen.nix
   ];
 
