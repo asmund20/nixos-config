@@ -124,6 +124,7 @@
     tree
     websocat
     ghc
+    cabal-install
 
     # lsps
     nil
