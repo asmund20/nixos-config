@@ -21,7 +21,7 @@
     enable = true;
     secureBoot.enable = true;
     extraConfig = ''
-      default_entry = Windows
+      default_entry = 2
     '';
     extraEntries = ''
       /Windows
