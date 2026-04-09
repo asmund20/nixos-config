@@ -22,9 +22,10 @@
     /Windows
     comment: Windows
     protocol: efi
-    image_path: \efi\boot\bootx64.efi
-    part_uuid: d6c351ce-c388-42eb-bdcc-c70bef8e10bf
+    image_path: guid(d6c351ce-c388-42eb-bdcc-c70bef8e10bf):/efi/boot/bootx64.efi
   '';
+  # image_path: \efi\boot\bootx64.efi
+  # part_uuid: d6c351ce-c388-42eb-bdcc-c70bef8e10bf
 
   networking.hostName = "nixos"; # Define your hostname.
 
