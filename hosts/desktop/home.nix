@@ -1,10 +1,11 @@
 {
   imports = [
-    ../../applications/home-manager/git.nix
     ../../applications/home-manager/ghostty.nix
-    ../../applications/home-manager/nushell.nix
-    ../../applications/home-manager/zen.nix
+    ../../applications/home-manager/git.nix
     ../../applications/home-manager/hypr/hyprland.nix
+    ../../applications/home-manager/nushell.nix
+    ../../applications/home-manager/waybar.nix
+    ../../applications/home-manager/zen.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
