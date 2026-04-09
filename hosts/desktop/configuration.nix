@@ -121,6 +121,7 @@
     python3
     typst
     tree
+    websocat
 
     # lsps
     nil
