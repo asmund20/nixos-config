@@ -123,6 +123,8 @@
     typst
     tree
     websocat
+    cabal
+    ghc
 
     # lsps
     nil
