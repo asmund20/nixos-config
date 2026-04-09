@@ -15,17 +15,22 @@
   ];
 
   # Bootloader.
-  boot.loader.limine.enable = true;
-  boot.loader.limine.secureBoot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.loader.limine = {
+    enable = true;
+    secureboot.enable = true;
+    extraConfig = ''
+      default_entry = Windows
+    '';
+    extraEntries = ''
+      /Windows
+      comment: Windows
+      protocol: efi
+      image_path: guid(d6c351ce-c388-42eb-bdcc-c70bef8e10bf):/EFI/Microsoft/Boot/bootmgfw.efi
+    '';
 
-  boot.loader.limine.extraEntries = ''
-    /Windows
-    comment: Windows
-    protocol: efi
-    image_path: guid(d6c351ce-c388-42eb-bdcc-c70bef8e10bf):/EFI/Microsoft/Boot/bootmgfw.efi
-  '';
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
 
