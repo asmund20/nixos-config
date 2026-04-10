@@ -2,7 +2,7 @@
   imports = [
     ../../applications/home-manager/ghostty.nix
     ../../applications/home-manager/git.nix
-    ../../applications/home-manager/hypr/hyprland.nix
+    ../../applications/home-manager/hypr
     ../../applications/home-manager/nushell
     ../../applications/home-manager/waybar/waybar.nix
     ../../applications/home-manager/zen.nix
