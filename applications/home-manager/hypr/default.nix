@@ -1,6 +1,7 @@
 {
   imports = [
     ./bindings.nix
+    ./hyprlock.nix
     ./hyprpaper.nix
     ./input.nix
     ./misc.nix
