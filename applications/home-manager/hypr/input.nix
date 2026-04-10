@@ -20,7 +20,7 @@
     extraConfig = ''
       device {
         name = dell0b43:00-04f3:3185-touchpad
-        sensitivity = 0.0
+        sensitivity = -0.2
       }
     '';
   };
