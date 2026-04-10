@@ -11,6 +11,7 @@
     ./hardware-configuration.nix
     ../../applications/native/kanata.nix
     ../../applications/native/zen.nix
+    inputs.home-manager.nixosModules.default
   ];
 
   # Bootloader.
