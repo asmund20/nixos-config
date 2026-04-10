@@ -15,6 +15,7 @@
             "pulseaudio/slider"
             "network"
             "bluetooth"
+            "battery"
           ];
 
           "bluetooth" = {
