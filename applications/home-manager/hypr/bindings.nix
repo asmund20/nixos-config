@@ -8,6 +8,9 @@
         "SUPER, B, exec, zen"
         "SUPER, SPACE, exec, rofi -show drun -show-icons"
 
+        # Hyprlock
+        "SUPER, L, exec, hyprlock"
+
         # Move focus and windows
         "SUPER, left, movefocus, l"
         "SUPER, right, movefocus, r"
