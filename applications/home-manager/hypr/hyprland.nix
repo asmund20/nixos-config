@@ -1,7 +1,7 @@
 {
   imports = [
     ./bindings.nix
-    ./hyprpaper.nix
+    # ./hyprpaper.nix
     ./input.nix
     ./misc.nix
   ];
