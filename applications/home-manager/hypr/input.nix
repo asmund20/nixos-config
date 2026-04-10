@@ -16,12 +16,12 @@
       cursor = {
         hide_on_key_press = true;
       };
-      extraConfig = ''
-        device {
-          name = dell0b43:00-04f3:3185-touchpad
-          sensitivity = 0.0
-        }
-      '';
     };
+    extraConfig = ''
+      device {
+        name = dell0b43:00-04f3:3185-touchpad
+        sensitivity = 0.0
+      }
+    '';
   };
 }
