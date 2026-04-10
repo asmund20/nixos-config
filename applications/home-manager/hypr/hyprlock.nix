@@ -1,5 +1,5 @@
 {
-  programs.hyprock = {
+  programs.hyprlock = {
     enable = true;
     settings = { };
   };
