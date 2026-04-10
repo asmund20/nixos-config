@@ -1,5 +1,5 @@
 {
   wayland.windowManager.hyprland.extraConfig = ''
-    monitor = , preferred, auto-center-up, 1
+    monitor = , preferred, auto, 1
   '';
 }
