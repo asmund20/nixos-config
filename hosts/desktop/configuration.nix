@@ -132,7 +132,7 @@
     websocat
     ghc
     cabal-install
-    brigtnessctl
+    brightnessctl
     pamixer
 
     # lsps
