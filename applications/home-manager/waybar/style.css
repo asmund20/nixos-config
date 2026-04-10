@@ -33,7 +33,7 @@ window#waybar.hidden {
     background: black;
 }
 #pulseaudio-slider highlight {
-    min-width: 10px;
+    min-width: 0;
     border-radius: 5px;
 }
 
