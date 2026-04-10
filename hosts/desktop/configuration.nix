@@ -132,6 +132,8 @@
     websocat
     ghc
     cabal-install
+    brigtnessctl
+    pamixer
 
     # lsps
     nil

@@ -76,6 +76,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "video"
     ];
     packages = with pkgs; [
     ];
@@ -121,6 +122,8 @@
     tree
     ghc
     cabal-install
+    brigtnessctl
+    pamixer
 
     # lsps and other neovim depenencies
     nil
