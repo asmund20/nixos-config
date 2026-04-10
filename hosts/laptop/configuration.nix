@@ -122,7 +122,7 @@
     tree
     ghc
     cabal-install
-    brigtnessctl
+    brightnessctl
     pamixer
 
     # lsps and other neovim depenencies
