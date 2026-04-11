@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
     ../../applications/native/kanata.nix
     ../../applications/native/zen.nix
-    ../../users.nix
+    inputs.home-manager.nixosModules.default
   ];
 
   # Bootloader.
@@ -74,6 +74,27 @@
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
+  };
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.asmund = {
+    isNormalUser = true;
+    description = "Åsmund";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "video"
+    ];
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    useUserPackages = true;
+    useGlobalPkgs = true;
+    backupFileExtension = "backup";
+    users = {
+      "asmund" = import ../../home.nix;
+    };
   };
 
   # Allow unfree packages
