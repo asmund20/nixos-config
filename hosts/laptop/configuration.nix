@@ -7,6 +7,7 @@
 
 {
   imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../applications/native/kanata.nix
     ../../applications/native/zen.nix
@@ -83,7 +84,7 @@
     useGlobalPkgs = true;
     backupFileExtension = "backup";
     users = {
-      "asmund" = import ./../../home.nix;
+      "asmund" = import ./home.nix;
     };
   };
 
