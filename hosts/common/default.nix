@@ -17,7 +17,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.limine.enable = true;
 
-  networking.hostname = lib.mkDefault "asmund nixos";
+  networking.hostName = lib.mkDefault "asmund nixos";
   networking.networkmanager.enable = true;
 
   # Set your time zone.
