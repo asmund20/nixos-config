@@ -83,7 +83,7 @@
     useGlobalPkgs = true;
     backupFileExtension = "backup";
     users = {
-      "asmund" = import ../../home.nix;
+      "asmund" = import ./../../home.nix;
     };
   };
 
