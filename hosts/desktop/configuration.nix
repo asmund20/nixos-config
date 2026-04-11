@@ -7,7 +7,6 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../applications/native/kanata.nix
     ../../applications/native/zen.nix
