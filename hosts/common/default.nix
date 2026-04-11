@@ -104,13 +104,10 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovim
-    ghostty
     nushell
     spotify
-    git
     unzip
     btop
-    pkgs.waybar
     rofi
     bat
     python3
@@ -123,7 +120,7 @@
 
     # lsps and other neovim depenencies
     nil
-    pkgs.nixfmt
+    nixfmt
     tinymist
     websocat
     haskell-language-server
@@ -138,6 +135,19 @@
       exec nu
     fi
   '';
+
+  systemd.services."lock-before-sleep" = {
+    description = "Lock all sessions before sleep";
+
+    # Run as root, but use loginctl which knows which sessions to lock
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = [ "${pkgs.systemd}/bin/loginctl lock-sessions" ];
+    };
+
+    wantedBy = [ "sleep.target" ];
+    before = [ "sleep.target" ];
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
