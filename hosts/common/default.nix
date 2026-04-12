@@ -124,6 +124,7 @@
     tinymist
     websocat
     haskell-language-server
+    jdt-language-server
   ];
 
   environment.shells = [
