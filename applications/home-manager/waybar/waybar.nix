@@ -1,5 +1,6 @@
 {
   programs = {
+    bluetuith.enable = true;
     waybar = {
       enable = true;
       settings = {
@@ -56,6 +57,7 @@
             format-connected = "󰂱";
             format-no-controller = "";
             tooltip-format = "Devices connected: {num_connections}";
+            on-click = "float-ghostty bluetuith";
           };
           clock = {
             "format" = "{:L%a %d %b %H:%M}";
