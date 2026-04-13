@@ -9,6 +9,7 @@
 {
   imports = [
     inputs.home-manager.nixosModules.default
+    ../../applications/native/fingerprint.nix
     ../../applications/native/kanata.nix
     ../../applications/native/zen.nix
   ];
@@ -118,6 +119,7 @@
     brightnessctl
     pamixer
     power-profiles-daemon
+    hyprlock
 
     # lsps and other neovim depenencies
     nil
