@@ -14,29 +14,6 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-#pulseaudio-slider {
-    padding: 0 10px;
-    margin: 0;
-}
-#pulseaudio-slider slider {
-    min-height: 0px;
-    min-width: 0px;
-    opacity: 0;
-    background-image: none;
-    border: none;
-    box-shadow: none;
-}
-#pulseaudio-slider trough {
-    min-height: 10px;
-    min-width: 60px;
-    border-radius: 5px;
-    background: black;
-}
-#pulseaudio-slider highlight {
-    min-width: 0;
-    border-radius: 5px;
-}
-
 window#waybar.termite {
     background-color: #3F3F3F;
 }
@@ -58,11 +35,6 @@ button {
 button:hover {
     background: inherit;
     box-shadow: inset 0 -3px #ffffff;
-}
-
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
 }
 
 #workspaces button {
@@ -134,12 +106,16 @@ button:hover {
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
     background-color: #f53c3c;
-    color: #ffffff;
+    color: #ff0000;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#battery.warning:not(.charging) {
+    color: #ff0000;
 }
 
 #power-profiles-daemon {
@@ -182,15 +158,6 @@ label:focus {
     background-color: #90b1b1;
 }
 
-#pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
-}
-
-#pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
-}
 
 #wireplumber {
     background-color: #fff0f5;
