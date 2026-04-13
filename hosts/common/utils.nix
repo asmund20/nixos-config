@@ -18,5 +18,15 @@
         }
       '';
     })
+    (writeTextFile {
+      name = "formatted-battery-percentage.nu";
+      destination = "/bin/formatted-battery-percentage";
+      executable = true;
+      text = ''
+        #!/usr/bin/env nu
+        let cap = cat /sys/class/power_supply/BAT0/capacity | into int
+        $"($cap) %"
+      '';
+    })
   ];
 }

@@ -80,7 +80,10 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+      nixosConfig = config;
+    };
     useUserPackages = true;
     useGlobalPkgs = true;
     backupFileExtension = "backup";
