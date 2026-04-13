@@ -20,7 +20,7 @@
       cmd="$*"   # join arguments with spaces
 
       # NOTE: $cmd is intentionally unquoted so it gets split into separate words
-      hyprctl dispatch exec "[float] ghostty -e $cmd"
+      hyprctl dispatch exec "[float] ghostty --confirm-close-surface=false -e $cmd"
     '')
   ];
 }
