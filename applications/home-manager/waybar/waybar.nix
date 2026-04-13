@@ -57,7 +57,7 @@
             format-connected = "󰂱";
             format-no-controller = "";
             tooltip-format = "Devices connected: {num_connections}";
-            on-click = "float-ghostty bluetuith";
+            on-click = "float-ghostty bluetuith --no-warning";
           };
           clock = {
             "format" = "{:L%a %d %b %H:%M}";

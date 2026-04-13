@@ -17,8 +17,10 @@
         exit 1
       fi
 
-      cmd="$*"
-      hyprctl dispatch exec "[float] ghostty -e \"$cmd\""
+      cmd="$*"   # join arguments with spaces
+
+      # NOTE: $cmd is intentionally unquoted so it gets split into separate words
+      hyprctl dispatch exec "[float] ghostty -e $cmd"
     '')
   ];
 }
