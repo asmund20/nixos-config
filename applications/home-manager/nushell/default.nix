@@ -1,4 +1,9 @@
 {
+  programs.bash.initExtra = ''
+    if ! [ "$TERM" = "dumb" ] && [ -z "$BASH_EXECUTION_STRING" ]; then
+      exec nu
+    fi
+  '';
   programs.nushell = {
     enable = true;
     settings = {

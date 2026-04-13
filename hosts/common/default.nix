@@ -131,12 +131,6 @@
     pkgs.nushell
   ];
 
-  programs.bash.interactiveShellInit = ''
-    if ! [ "$TERM" = "dumb" ] && [ -z "$BASH_EXECUTION_STRING" ]; then
-      exec nu
-    fi
-  '';
-
   systemd.services."lock-before-sleep" = {
     description = "Lock all sessions before sleep";
 
