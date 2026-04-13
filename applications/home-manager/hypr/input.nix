@@ -20,11 +20,11 @@
     extraConfig = ''
       device {
         name = dell0b43:00-04f3:3185-touchpad
-        sensitivity = -0.2
+        sensitivity = 0
       }
       device {
         name = apple-inc.-magic-trackpad
-        sensitivity = -0.2
+        sensitivity = 0
       }
     '';
   };
