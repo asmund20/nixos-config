@@ -17,6 +17,7 @@
             "network"
             "bluetooth"
             "battery"
+            "power-profiles-daemon"
           ];
 
           "battery" = {
@@ -84,6 +85,17 @@
             format-ethernet = "󰀂";
             format-disconnected = "󰤮";
             on-click = "float-ghostty 'nmtui'";
+          };
+          "power-profiles-daemon" = {
+            "format" = "{icon}";
+            "tooltip-format" = "Power profile: {profile}\nDriver: {driver}";
+            "tooltip" = true;
+            "format-icons" = {
+              "default" = "";
+              "performance" = "";
+              "balanced" = "";
+              "power-saver" = "";
+            };
           };
           pulseaudio = {
             "format" = "{volume}% {icon}";

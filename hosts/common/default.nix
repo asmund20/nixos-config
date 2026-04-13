@@ -117,6 +117,7 @@
     cabal-install
     brightnessctl
     pamixer
+    power-profiles-daemon
 
     # lsps and other neovim depenencies
     nil
@@ -136,6 +137,8 @@
       exec nu
     fi
   '';
+
+  services.power-profiles-daemon.enable = true;
 
   systemd.services."lock-before-sleep" = {
     description = "Lock all sessions before sleep";
