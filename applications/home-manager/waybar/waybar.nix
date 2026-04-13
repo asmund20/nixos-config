@@ -79,6 +79,7 @@
             format-wifi = "{icon}";
             format-ethernet = "󰀂";
             format-disconnected = "󰤮";
+            on-click = "float-ghostty 'nmtui'";
           };
           "pulseaudio/slider" = {
             min = 0;
