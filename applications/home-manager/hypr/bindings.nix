@@ -73,6 +73,9 @@
         ",XF86AudioRaiseVolume,exec,pamixer -i 5"
         ",XF86AudioLowerVolume,exec,pamixer -d 5"
         ",XF86AudioMute,exec,pamixer -t"
+        "SUPER,U,exec,pamixer -i 5"
+        "SUPER,D,exec,pamixer -d 5"
+        "SUPER,M,exec,pamixer -t"
 
         # Brightness
         ",XF86MonBrightnessUp,exec,brightnessctl set +5%"
