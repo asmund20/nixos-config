@@ -67,7 +67,8 @@
 
         # Close window
         "SUPER, W, killactive"
-
+      ];
+      bindel = [
         # Volume
         ",XF86AudioRaiseVolume,exec,pamixer -i 5"
         ",XF86AudioLowerVolume,exec,pamixer -d 5"
