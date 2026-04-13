@@ -2,6 +2,7 @@
   programs.ghostty = {
     enable = true;
     settings = {
+      command = "nu";
       cursor-style = "block";
       cursor-invert-fg-bg = true;
       background-opacity = 0.91;
