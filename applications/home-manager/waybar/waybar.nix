@@ -1,4 +1,8 @@
+{ pkgs, ... }:
 {
+  imports = [
+    ./bluetuith.nix
+  ];
   programs = {
     waybar = {
       enable = true;
@@ -56,6 +60,7 @@
             format-connected = "󰂱";
             format-no-controller = "";
             tooltip-format = "Devices connected: {num_connections}";
+            on-click = "bluetuith";
           };
           clock = {
             "format" = "{:L%a %d %b %H:%M}";
