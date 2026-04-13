@@ -9,7 +9,6 @@
   imports = [
     ./hardware-configuration.nix
     ../common
-    ../../applications/native/impala.nix
   ];
 
   networking.hostName = "asmund-nixos-laptop";
