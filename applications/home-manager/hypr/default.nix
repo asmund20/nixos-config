@@ -5,6 +5,7 @@
     ./hyprlock.nix
     ./hyprpaper.nix
     ./input.nix
+    ./mako.nix
     ./misc.nix
     ./monitors.nix
   ];
