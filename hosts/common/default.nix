@@ -145,19 +145,6 @@
 
   services.power-profiles-daemon.enable = true;
 
-  systemd.services."lock-before-sleep" = {
-    description = "Lock all sessions before sleep";
-
-    # Run as root, but use loginctl which knows which sessions to lock
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = [ "${pkgs.systemd}/bin/loginctl lock-sessions" ];
-    };
-
-    wantedBy = [ "sleep.target" ];
-    before = [ "sleep.target" ];
-  };
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
