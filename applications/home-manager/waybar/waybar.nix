@@ -1,4 +1,10 @@
+{ pkgs, ... }:
 {
+
+  home.packages = with pkgs; [
+    networkmanagerapplet
+  ];
+
   programs = {
     bluetuith.enable = true;
     waybar = {
@@ -84,7 +90,7 @@
             format-wifi = "{icon}";
             format-ethernet = "󰀂";
             format-disconnected = "󰤮";
-            on-click = "float-ghostty 'nmtui'";
+            on-click = "nm-connection-editor";
           };
           "power-profiles-daemon" = {
             "format" = "{icon}";
