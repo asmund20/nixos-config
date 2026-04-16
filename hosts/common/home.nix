@@ -6,7 +6,7 @@
     ../../applications/home-manager/git.nix
     ../../applications/home-manager/hypr
     ../../applications/home-manager/nushell
-    ../../applications/home-manager/waybar/waybar.nix
+    ../../applications/home-manager/waybar
     ../../applications/home-manager/zen.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
