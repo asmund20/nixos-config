@@ -123,6 +123,8 @@
     pamixer
     power-profiles-daemon
     hyprlock
+    ant
+    jdk
 
     # lsps and other neovim depenencies
     nil
