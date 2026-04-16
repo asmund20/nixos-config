@@ -90,7 +90,7 @@
             format-wifi = "{icon}";
             format-ethernet = "󰀂";
             format-disconnected = "󰤮";
-            on-click = "nm-connection-editor";
+            on-click = "hyprctl dispatch exec \"[float] nm-connection-editor\"";
           };
           "power-profiles-daemon" = {
             "format" = "{icon}";
