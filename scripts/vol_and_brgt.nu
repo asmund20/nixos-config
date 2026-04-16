@@ -33,14 +33,9 @@ def notify [id_file: string, title: string, percentage: int, extra_message: stri
     let bar_length = 20
     let filled = $percentage * $bar_length / 100 | into int
     let empty = $bar_length - $filled
-    mut bar = ""
-    for _ in 0..<$filled {
-        $bar += "█"
-    }
 
-    for _ in 0..<$empty {
-        $bar += "░"
-    }
+    mut bar = 0.. | each {"█"} | take $filled | str join
+    $bar += 0.. | each {"░"} | take $empty | str join
 
     if ($id_file | path exists) {
         let id = cat $id_file | into int
