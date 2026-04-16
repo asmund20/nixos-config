@@ -9,25 +9,25 @@
         "SUPER, SPACE, exec, rofi -show drun -show-icons"
 
         # Hyprlock
-        "SUPER, L, exec, hyprlock"
+        "SUPER, C, exec, hyprlock"
 
         # Move focus and windows
-        "SUPER, left, movefocus, l"
-        "SUPER, right, movefocus, r"
-        "SUPER, up, movefocus, u"
-        "SUPER, down, movefocus, d"
+        "SUPER, H, movefocus, l"
+        "SUPER, L, movefocus, r"
+        "SUPER, K, movefocus, u"
+        "SUPER, J, movefocus, d"
 
         # Move workspace to other monitor
-        "SUPER SHIFT ALT, left, movecurrentworkspacetomonitor, l"
-        "SUPER SHIFT ALT, right, movecurrentworkspacetomonitor, r"
-        "SUPER SHIFT ALT, up, movecurrentworkspacetomonitor, u"
-        "SUPER SHIFT ALT, down, movecurrentworkspacetomonitor, d"
+        "SUPER SHIFT ALT, H, movecurrentworkspacetomonitor, l"
+        "SUPER SHIFT ALT, L, movecurrentworkspacetomonitor, r"
+        "SUPER SHIFT ALT, K, movecurrentworkspacetomonitor, u"
+        "SUPER SHIFT ALT, J, movecurrentworkspacetomonitor, d"
 
         # Switch window with the one next to it
-        "SUPER SHIFT, left, swapwindow, l"
-        "SUPER SHIFT, right, swapwindow, r"
-        "SUPER SHIFT, up, swapwindow, u"
-        "SUPER SHIFT, down, swapwindow, d"
+        "SUPER SHIFT, H, swapwindow, l"
+        "SUPER SHIFT, L, swapwindow, r"
+        "SUPER SHIFT, K, swapwindow, u"
+        "SUPER SHIFT, J, swapwindow, d"
 
         # Switch workspace
         "SUPER, code:10, workspace, 1"
