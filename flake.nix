@@ -31,14 +31,14 @@
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/desktop/configuration.nix
+          ./hosts/desktop
           inputs.home-manager.nixosModules.default
         ];
-       };
-       nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+      };
+      nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/laptop/configuration.nix
+          ./hosts/laptop
           inputs.home-manager.nixosModules.default
         ];
       };
