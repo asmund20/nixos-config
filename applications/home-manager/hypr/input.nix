@@ -6,9 +6,7 @@
         kb_variant = "nodeadkeys";
         repeat_rate = 40;
         repeat_delay = 600;
-        # TODO: do the sensitivity in extra-config for the gaming mouse,
-        # instead of setting all other mice to sensitivity zero
-        sensitivity = -0.7;
+        sensitivity = 0;
         touchpad = {
           disable_while_typing = true;
           natural_scroll = true;
@@ -22,12 +20,8 @@
     };
     extraConfig = ''
       device {
-        name = dell0b43:00-04f3:3185-touchpad
-        sensitivity = 0
-      }
-      device {
-        name = apple-inc.-magic-trackpad
-        sensitivity = 0
+        name = compx-mad-8k-dongle-1
+        sensitivity = -0.7
       }
     '';
   };
