@@ -10,18 +10,6 @@ def main [target: string, command: string] {
     match $target {
         "volume" => {volume $command}
         "brightness" => {brightness $command}
-        _ => {echo "Did not recognize" + $target}
-    }
-
-    sleep ($timeout_duration)
-
-    if (($brightness_id_file | path exists)
-            and (age $brightness_id_file) > $timeout_duration) {
-        rm $brightness_id_file
-    }
-    if (($volume_id_file | path exists)
-            and (age $volume_id_file) > $timeout_duration) {
-        rm $volume_id_file
     }
 }
 
@@ -44,6 +32,13 @@ def notify [id_file: string, title: string, percentage: int, extra_message: stri
     } else {
         notify-send --expire-time=($timeout) -p $title ($"($bar) ($percentage)%" + $extra_message)
             | save $id_file
+    }
+
+    sleep $timeout_duration
+
+    if (($id_file | path exists)
+            and (age $id_file) > $timeout_duration) {
+        rm $id_file
     }
 }
 
