@@ -29,6 +29,8 @@
       # NIXOS stuff
       nrs = "sudo nixos-rebuild switch --flake";
       nrt = "sudo nixos-rebuild test --flake";
+
+      TODO = "grep -R 'TODO' .";
     };
   };
 }
