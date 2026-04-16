@@ -70,16 +70,16 @@
       ];
       bindel = [
         # Volume
-        ",XF86AudioRaiseVolume,exec,pamixer -i 5"
-        ",XF86AudioLowerVolume,exec,pamixer -d 5"
-        ",XF86AudioMute,exec,pamixer -t"
-        "SUPER,U,exec,pamixer -i 5"
-        "SUPER,D,exec,pamixer -d 5"
-        "SUPER,M,exec,pamixer -t"
+        ",XF86AudioRaiseVolume,exec,vol_and_brgt volume +"
+        ",XF86AudioLowerVolume,exec,vol_and_brgt volume -"
+        ",XF86AudioMute,exec,vol_and_brgt volume m"
+        "SUPER,U,exec,vol_and_brgt volume +"
+        "SUPER,D,exec,vol_and_brgt volume -"
+        "SUPER,M,exec,vol_and_brgt volume m"
 
         # Brightness
-        ",XF86MonBrightnessUp,exec,brightnessctl set +5%"
-        ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
+        ",XF86MonBrightnessUp,exec,vol_and_brgt brightness +"
+        ",XF86MonBrightnessDown,exec,vol_and_brgt brightness -"
       ];
     };
   };

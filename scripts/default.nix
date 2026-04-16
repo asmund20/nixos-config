@@ -11,22 +11,19 @@
       name = "float-ghostty.nu";
       destination = "/bin/float-ghostty";
       executable = true;
-      text = ''
-        #!/usr/bin/env nu
-        def main [cmd: string] {
-          hyprctl dispatch exec $"[float] ghostty --confirm-close-surface=false -e ($cmd)"
-        }
-      '';
+      text = builtins.readFile ./float-ghostty.nu;
     })
     (writeTextFile {
       name = "formatted-battery-percentage.nu";
       destination = "/bin/formatted-battery-percentage";
       executable = true;
-      text = ''
-        #!/usr/bin/env nu
-        let cap = cat /sys/class/power_supply/BAT0/capacity | into int
-        $"($cap) %"
-      '';
+      text = builtins.readFile ./formatted-battery-percentage.nu;
+    })
+    (writeTextFile {
+      name = "vol_and_brgt.nu";
+      destination = "/bin/vol_and_brgt";
+      executable = true;
+      text = builtins.readFile ./vol_and_brgt.nu;
     })
   ];
 }

@@ -1,6 +1,6 @@
 {
   imports = [
-    ./utils.nix
+    ../../scripts
     ../../applications/home-manager/batsignal.nix
     ../../applications/home-manager/ghostty.nix
     ../../applications/home-manager/git.nix
