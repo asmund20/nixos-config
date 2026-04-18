@@ -54,10 +54,6 @@
             lctl lmet lalt           spc            ralt
           )
 
-          ;; Home-row mod aliases (tap = letter, hold = modifier)
-          ;;
-          ;; (tap-hold tap-ms hold-ms tap-key hold-key)
-          ;; Adjust the 150/150 timing later if needed.
           (defalias
             ;; layers
             NAV       (layer-while-held nav)
@@ -67,7 +63,7 @@
 
             ;; AltGr mods
             HM_A     (tap-hold 150 150 a ralt)
-            HM_Ø      (tap-hold 150 150 ; ralt)
+            HM_DIA      (tap-hold 150 150 ] ralt)
 
             ;; Lshft mods
             HM_S      (tap-hold 150 150 s lsft)
@@ -97,24 +93,35 @@
             WSP9      (multi lmet 9)
             WSP0      (multi lmet 0)
 
+            WNDL      (multi lmet h)
+            WNDR      (multi lmet l)
+            WNDU      (multi lmet k)
+            WNDD      (multi lmet j)
+
             ;; Nav layer
             TERMINAL  (multi lmet ret)
             CLOSE     (multi lmet w)
             BROWSER   (multi lmet b)
+
+            AE '
+            OE ;
+            AA [
            
             ;; Symbols in number-layer
             grv (multi lsft grave)    ;; `
             exp (multi ralt grave)    ;; ^
             tld (multi ralt lsft grave)    ;; ~
-            eq  S-0    ;; =
             exc S-1    ;; !
             qot S-2    ;; "
+            sqt Backslash ;; '
             hsh S-3    ;; #
             pct S-5    ;; %
             amp S-6    ;; &
             fsh S-7    ;; /
-            pl  S-8    ;; (
-            pr  S-9    ;; )
+            eq  (tap-hold 150 150 S-0 ralt)    ;; =
+            lt  (tap-hold 150 150 IntlBackslash lsft) ;; <
+            pl  (tap-hold 150 150 S-8 lctrl)   ;; (
+            pr  (tap-hold 150 150 S-9 lalt)    ;; )
             bkl (multi ralt 8)    ;; [
             bkr (multi ralt 9)    ;; ]
             bcl (multi ralt 7)    ;; {
@@ -123,27 +130,31 @@
             bar grave  ;; |
             dlr (multi ralt 4)    ;; $
             at  (multi ralt 2)    ;; @
+            fur (tap-hold 150 150 4 lalt)
+            fve (tap-hold 150 150 5 lctrl)
+            six (tap-hold 150 150 6 lsft)
+            pls (tap-hold 150 150 Minus ralt)
           )
 
           (deflayer home
-            esc  _     _     _     _     _        _     _     _     _     _        _   _
-            tab  @HM_A @HM_S @HM_D @HM_F _        _     @HM_J @HM_K @HM_L @HM_Ø    _   _
+            esc  _     _     _     _     _        _     _     _     _     _      Backspace   _
+            tab  @HM_A @HM_S @HM_D @HM_F _        _     @HM_J @HM_K @HM_L @HM_DIA ret   _
             caps _ _     _     _     @NUM_V _           @NUM_N _     _     _     _       _
-            _    _    @NAV         _                    @NUM
+            _    _    @NAV         _                    _
           )
 
           (deflayer num
-            _   @grv @hsh @bcl @bcr @fsh     @at  7 8 9 @pct _ _
-            _   @tld @qot @pl  @pr  @bsh     @exc 4 5 6 @eq  _ _
-            _ _ +    @bar @bkl @bkr @dlr     0    1 2 3 @amp _
-            _ _ _                     _   _
+            _   @fsh @at  @bcl @bcr @AA      @bar 7    8    9    @fsh _ _
+            _   @eq  @lt  @pl  @pr  @OE      @sqt @fur @fve @six @pls _ _
+            _ _ @qot @dlr @bkl @bkr @AE      0    1    2    3    /    _
+            _ _ _                        _   _
           )
 
           (deflayer nav
-            _       _     @CLOSE _     _     _             _    home end _     _    _ _
-            _       @WSP1 @WSP2  @WSP3 @WSP4 @WSP5         left down up  right lalt _ @TERMINAL
-            _ @WSP6 @WSP7 @WSP8  @WSP9 @WSP0 @BROWSER      _    _    _   _     _    _
-            _ _ _         (multi lmet lalt spc)                _
+            _       _     @CLOSE _     _     _             _     home  end   _     _    _ _
+            _       @WSP1 @WSP2  @WSP3 @WSP4 @WSP5         left  down  up    right lalt _ @TERMINAL
+            _ @WSP6 @WSP7 @WSP8  @WSP9 @WSP0 @BROWSER      @WNDL @WNDD @WNDU @WNDL _    _
+            _ _ _         (multi lmet spc)                _
           )
         '';
       };
