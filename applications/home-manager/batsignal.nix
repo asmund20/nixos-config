@@ -1,8 +1,10 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./mako.nix
+  ];
   home.packages = with pkgs; [
     libnotify
   ];
-  services.mako.enable = true;
   services.batsignal.enable = true;
 }

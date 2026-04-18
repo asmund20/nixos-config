@@ -27,10 +27,10 @@ def notify [id_file: string, title: string, percentage: int, extra_message: stri
 
     if ($id_file | path exists) {
         let id = cat $id_file | into int
-        notify-send --expire-time=($timeout) --replace-id=($id) $title ($"($bar) ($percentage)%" + $extra_message)
+        notify-send --category="center" --expire-time=($timeout) --replace-id=($id) $title ($"($bar) ($percentage)%" + $extra_message)
         touch $id_file
     } else {
-        notify-send --expire-time=($timeout) -p $title ($"($bar) ($percentage)%" + $extra_message)
+        notify-send --category="center" --expire-time=($timeout) -p $title ($"($bar) ($percentage)%" + $extra_message)
             | save $id_file
     }
 
