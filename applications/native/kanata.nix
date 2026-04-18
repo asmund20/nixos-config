@@ -144,7 +144,7 @@
           )
 
           (deflayer num
-            _   @fsh @at  @bcl @bcr @AA      @bar 7    8    9    @fsh _ _
+            _   @fsh @at  @bcl @bcr @AA      @bar 7    8    9    @bsh _ _
             _   @eq  @lt  @pl  @pr  @OE      @sqt @fur @fve @six @pls _ _
             _ _ @qot @dlr @bkl @bkr @AE      0    1    2    3    /    _
             _ _ _                        _   _
