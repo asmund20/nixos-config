@@ -2,6 +2,7 @@
   imports = [
     ../../scripts
     ../../applications/home-manager/batsignal.nix
+    ../../applications/home-manager/fourmolu.nix
     ../../applications/home-manager/ghostty.nix
     ../../applications/home-manager/git.nix
     ../../applications/home-manager/hypr

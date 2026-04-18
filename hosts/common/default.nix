@@ -132,6 +132,7 @@
     tinymist
     websocat
     haskell-language-server
+    fourmolu
     jdt-language-server
   ];
 
