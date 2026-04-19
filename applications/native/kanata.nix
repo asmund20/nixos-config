@@ -143,7 +143,7 @@
             esc  _     _     _     _     _        _     _     _     _     _      Backspace   _
             tab  @HM_A @HM_S @HM_D @HM_F _        _     @HM_J @HM_K @HM_L @HM_DIA ret   _
             caps _ _     _     _     @NUM_V _           @NUM_N _     _     _     _       _
-            _    _    @NAV         @NAV_SPC             _
+            _    _    @NUM         @NAV_SPC             _
           )
 
           (deflayer num
