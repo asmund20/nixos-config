@@ -1,6 +1,7 @@
 {
   imports = [
     ../../scripts
+    ../../applications/home-manager/gtk.nix
     ../../applications/home-manager/batsignal.nix
     ../../applications/home-manager/fourmolu.nix
     ../../applications/home-manager/ghostty.nix
