@@ -156,7 +156,7 @@
           (deflayer nav
             _       _     @CLOSE _     _     _             _     home  end   _     _    _ _
             _       @WSP1 @WSP2  @WSP3 @WSP4 @WSP5         left  down  up    right lalt @TERMINAL @TERMINAL
-            _ @WSP6 @WSP7 @WSP8  @WSP9 @WSP0 @BROWSER      @WNDL @WNDD @WNDU @WNDL _    _
+            _ @WSP6 @WSP7 @WSP8  @WSP9 @WSP0 @BROWSER      @WNDL @WNDD @WNDU @WNDR _    _
             _ _ _         (multi lmet spc)                _
           )
         '';
