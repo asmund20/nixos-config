@@ -1,11 +1,4 @@
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-
-{
   # Enable the uinput module
   boot.kernelModules = [ "uinput" ];
 
@@ -61,8 +54,9 @@
             NAV       (layer-while-held nav)
             NUM       (layer-while-held num)
             NAV_SPC   (tap-hold 150 150 spc @NAV)
-            NUM_N      (tap-hold 150 150 n @NUM)
-            NUM_V      (tap-hold 150 150 v @NUM)
+            NUM_SPC   (tap-hold 150 150 spc @NUM)
+            NUM_N     (tap-hold 150 150 n @NUM)
+            NUM_V     (tap-hold 150 150 v @NUM)
 
             ;; AltGr mods
             HM_A     (tap-hold 150 150 a ralt)
@@ -143,7 +137,7 @@
             esc  _     _     _     _     _        _     _     _     _     _      Backspace   _
             tab  @HM_A @HM_S @HM_D @HM_F _        _     @HM_J @HM_K @HM_L @HM_DIA ret   _
             caps _ _     _     _     @NUM_V _           @NUM_N _     _     _     _       _
-            _    _    @NUM         @NAV_SPC             _
+            _    _    @NAV         @NUM_SPC             _
           )
 
           (deflayer num
