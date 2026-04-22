@@ -31,6 +31,8 @@
       nrt = "sudo nixos-rebuild test --flake";
 
       TODO = "grep -R 'TODO' .";
+
+      copy = "wl-copy";
     };
   };
 }
