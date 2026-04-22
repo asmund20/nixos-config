@@ -125,14 +125,6 @@
     hyprlock
     ant
     jdk
-
-    # lsps and other neovim depenencies
-    nil
-    nixfmt
-    tinymist
-    websocat
-    haskell-language-server
-    fourmolu
     jdt-language-server
   ];
 
