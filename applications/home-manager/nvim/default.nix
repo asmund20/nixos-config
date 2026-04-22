@@ -33,4 +33,7 @@
     fourmolu
     jdt-language-server
   ];
+
+  # The actual config
+  home.file.".config/nvim".source = ./nvim;
 }
