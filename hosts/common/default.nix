@@ -111,6 +111,7 @@
     nushell
     spotify
     unzip
+    wl-clipboard
     btop
     rofi
     bat
@@ -125,7 +126,6 @@
     hyprlock
     ant
     jdk
-    jdt-language-server
   ];
 
   environment.shells = [
