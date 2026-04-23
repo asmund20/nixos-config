@@ -2,8 +2,10 @@ local lsp_zero = require("lsp-zero")
 
 -- lsp_attach is where you enable features that only work
 -- if there is a language server active in the file
-local lsp_attach = function(client, bufnr)
-	local opts = { buffer = bufnr }
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local bufnr = args.buf
+    local opts = { buffer = bufnr }
 
 	vim.keymap.set("n", "gd", function()
 		vim.lsp.buf.definition()
@@ -35,39 +37,34 @@ local lsp_attach = function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", function()
 		vim.lsp.buf.signature_help()
 	end, opts)
-end
-
-lsp_zero.extend_lspconfig({
-	sign_text = true,
-	lsp_attach = lsp_attach,
-	capabilities = require("cmp_nvim_lsp").default_capabilities(),
+  end,
 })
 
 local cmp = require("cmp")
-local cmp_select = { behavior = cmp.SelectBehavior.select }
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 cmp.setup({
-	sources = {
-		{ name = "nvim_lsp" },
-	},
-	snippet = {
-		expand = function(args)
-			-- You need Neovim v0.10 to use vim.snippet
-			vim.snippet.expand(args.body)
-		end,
-	},
-	mapping = cmp.mapping.preset.insert({
-		["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-		["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-		["<C-y>"] = cmp.mapping.confirm({ select = true }),
-		["<C-Space>"] = cmp.mapping.complete(),
-	}),
+  sources = {
+    { name = "nvim_lsp" },
+  },
+  snippet = {
+    expand = function(args)
+      vim.snippet.expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+    ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+    ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"] = cmp.mapping.complete(),
+  }),
 })
 
--- formatter setup. Ensure all formatters are installed by Mason
 require("conform").setup({
 	formatters_by_ft = {
-		python = { "autopep8", "isort" },
 		haskell = { "fourmolu" },
         nix = { "nixfmt" },
 	},
@@ -78,21 +75,20 @@ require("conform").setup({
 	},
 })
 
-vim.lsp.enable("nil")
 vim.lsp.config("nil", {
     cmd = { "nil" },
     filetypes = { "nix" },
     root_markers = { "flake.nix", ".git" },
 })
+vim.lsp.enable("nil")
 
-vim.lsp.enable("tinymist")
 vim.lsp.config("tinymist", {
     cmd = { "tinymist" },
     filetypes = { "typst" },
     root_markers = { "main.typ", ".git" },
 })
+vim.lsp.enable("tinymist")
 
-vim.lsp.enable("hls")
 vim.lsp.config("hls", {
     cmd = { "haskell-language-server-wrapper", "--lsp" },
     filetypes = { "haskell", "lhaskell" },
@@ -103,16 +99,17 @@ vim.lsp.config("hls", {
         },
     },
 })
+vim.lsp.enable("hls")
 
-vim.lsp.enable("nuls")
 vim.lsp.config("nuls", {
     cmd = { "nu", "--lsp" },
     filetypes = { "nu" },
 })
+vim.lsp.enable("nuls")
 
-vim.lsp.enable("jdtls")
 vim.lsp.config("jdtls", {
     cmd = { "jdtls" },
     filetypes = { "java" };
     root_mrakers = { "build.xml", ".git" },
 })
+vim.lsp.enable("jdtls")
