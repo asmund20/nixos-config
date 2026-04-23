@@ -126,6 +126,7 @@
     hyprlock
     ant
     jdk
+    ergogen
   ];
 
   environment.shells = [
