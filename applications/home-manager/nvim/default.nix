@@ -8,8 +8,6 @@
     vimAlias = true;
     vimdiffAlias = true;
     plugins = with pkgs.vimPlugins; [
-      lsp-zero-nvim
-      nvim-lspconfig
       nvim-cmp
       cmp-nvim-lsp
       nvim-treesitter.withAllGrammars
