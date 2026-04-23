@@ -76,6 +76,7 @@
       "video"
     ];
     packages = with pkgs; [
+      kicad-unstable-small
     ];
   };
 
