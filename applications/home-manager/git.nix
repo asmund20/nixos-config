@@ -11,6 +11,7 @@
       pull.rebase = false;
       push.autoSetupRemote = true;
       push.default = "current";
+      diff.tool = "nvimdiff";
     };
   };
 }
