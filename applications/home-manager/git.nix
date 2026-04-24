@@ -9,6 +9,8 @@
       core.editor = "nvim";
       init.defaultBranch = "main";
       pull.rebase = false;
+      push.autoSetupRemote = true;
+      push.default = "current";
     };
   };
 }
