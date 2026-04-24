@@ -109,4 +109,5 @@ vim.lsp.enable("jdtls")
 vim.lsp.config("jdtls", {
     cmd = { "jdtls" },
     filetypes = { "java" },
+    root_markers = { "mvnw", "gradlew", "settings.gradle", "settings.gradle.kts", ".git", "build.xml", "pom.xml", "build.gradle", "build.gradle.kts" },
 })
