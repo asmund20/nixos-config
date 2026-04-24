@@ -3,7 +3,6 @@
     settings = {
       bind = [
         # Open stuff
-        "SUPER, RETURN, exec, ghostty"
         "SUPER, T, exec, ghostty"
         "SUPER, B, exec, zen"
         "SUPER, SPACE, exec, rofi -show drun -show-icons"
