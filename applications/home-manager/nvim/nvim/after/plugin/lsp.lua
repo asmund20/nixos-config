@@ -73,20 +73,21 @@ require("conform").setup({
 	},
 })
 
+vim.lsp.enable("nil")
 vim.lsp.config("nil", {
     cmd = { "nil" },
     filetypes = { "nix" },
     root_markers = { "flake.nix", ".git" },
 })
-vim.lsp.enable("nil")
 
+vim.lsp.enable("tinymist")
 vim.lsp.config("tinymist", {
     cmd = { "tinymist" },
     filetypes = { "typst" },
     root_markers = { "main.typ", ".git" },
 })
-vim.lsp.enable("tinymist")
 
+vim.lsp.enable("hls")
 vim.lsp.config("hls", {
     cmd = { "haskell-language-server-wrapper", "--lsp" },
     filetypes = { "haskell", "lhaskell" },
@@ -97,17 +98,16 @@ vim.lsp.config("hls", {
         },
     },
 })
-vim.lsp.enable("hls")
 
+vim.lsp.enable("nuls")
 vim.lsp.config("nuls", {
     cmd = { "nu", "--lsp" },
     filetypes = { "nu" },
 })
-vim.lsp.enable("nuls")
 
+vim.lsp.enable("jdtls")
 vim.lsp.config("jdtls", {
     cmd = { "jdtls" },
     filetypes = { "java" };
     root_mrakers = { "build.xml", ".git" },
 })
-vim.lsp.enable("jdtls")
