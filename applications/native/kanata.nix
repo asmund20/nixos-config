@@ -36,8 +36,10 @@
           "/dev/input/by-path/pci-0000:00:14.0-usbv2-0:1:1.2-event-kbd"
           "/dev/input/by-path/pci-0000:00:14.0-usbv2-0:6:1.0-event-kbd"
 
-          # Laptop
+          # Laptop built-in
           "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+          # Laptop keebagn
+          "/dev/input/event16"
         ];
         extraDefCfg = "process-unmapped-keys yes";
         config = ''
