@@ -38,8 +38,6 @@
 
           # Laptop built-in
           "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
-          # Laptop keebagn
-          "/dev/input/event16"
         ];
         extraDefCfg = "process-unmapped-keys yes";
         config = ''
