@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   home.sessionPath = [
     "$HOME/.local/bin"
@@ -24,6 +24,12 @@
       destination = "/bin/vol_and_brgt";
       executable = true;
       text = builtins.readFile ./vol_and_brgt.nu;
+    })
+    (writeTextFile {
+      name = "monitor_disable.nu";
+      destination = "/bin/monitor_disable";
+      executable = true;
+      text = builtins.readFile ./monitor_disable.nu;
     })
   ];
 }
