@@ -119,12 +119,14 @@
     python3
     typst
     tree
-    ghc
-    cabal-install
     brightnessctl
     pamixer
     power-profiles-daemon
     hyprlock
+    hyprshot
+
+    ghc
+    cabal-install
     ant
     jdk
     ergogen
