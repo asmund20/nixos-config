@@ -14,7 +14,7 @@ def main [] {
                     hyprctl keyword monitor "eDP-1, disable"
                     break
                 } else if ($row | str ends-with "opened.") {
-                    hyprctl keyword monitor "eDP-1, preferred, auto, 1"
+                    hyprctl reload
                     break
                 }
                 
