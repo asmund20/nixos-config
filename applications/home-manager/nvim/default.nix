@@ -1,8 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [
-    ./haskell.nix
-  ];
   programs.git.enable = true;
   programs.neovim = {
     enable = true;
@@ -30,6 +27,8 @@
     nixfmt
     tinymist
     websocat
+    haskell-language-server
+    fourmolu
     jdt-language-server
   ];
 
