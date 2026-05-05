@@ -25,11 +25,10 @@
       executable = true;
       text = builtins.readFile ./vol_and_brgt.nu;
     })
-    (writeTextFile {
-      name = "monitor_disable.nu";
-      destination = "/bin/monitor_disable";
-      executable = true;
-      text = builtins.readFile ./monitor_disable.nu;
-    })
   ];
+
+  home.file.".local/bin/monitor_disable" = {
+    text = builtins.readFile ./monitor_disable.nu;
+    executable = true;
+  };
 }

@@ -88,9 +88,6 @@
     useUserPackages = true;
     useGlobalPkgs = true;
     backupFileExtension = "backup";
-    users = {
-      "asmund" = import ./home.nix;
-    };
   };
 
   # Allow unfree packages
@@ -133,6 +130,7 @@
   ];
 
   environment.shells = [
+    pkgs.bash
     pkgs.nushell
   ];
 
