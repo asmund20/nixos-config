@@ -4,6 +4,14 @@ def main [] {
     mut lastEntry = date now
     while true {
         sleep 1sec
+
+        let monitors = hyprctl monitors -j | from json
+        if (monitors | is-empty) {
+            $lastEntry = date now
+            hyprctl reload
+            systemctl sleep
+        }
+
         let log = journalctl -b -u systemd-logind | tail -n 3 | split row "\n" | reverse
         for row in $log {
             let splitRow = $row | split row " "
