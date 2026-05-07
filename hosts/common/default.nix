@@ -148,7 +148,7 @@
     # Run as root, but use loginctl which knows which sessions to lock
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = [ "hyprlock" ];
+      ExecStart = [ "loginctl lock-sessions" ];
     };
 
     wantedBy = [ "sleep.target" ];
