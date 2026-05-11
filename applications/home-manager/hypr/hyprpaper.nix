@@ -21,6 +21,7 @@ in
         monitor = "";
         path = [ "${config.xdg.dataHome}/wallpapers/main.jpg" ];
       };
+      splash = false;
     };
   };
 
