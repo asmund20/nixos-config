@@ -85,6 +85,12 @@ vim.lsp.config("tinymist", {
     cmd = { "tinymist" },
     filetypes = { "typst" },
     root_markers = { "main.typ", ".git" },
+    settings = {
+        formatterMode = "typstyle",
+        formatterProseWrap = true,
+        formatterPrintWidth = 80,
+        formatterIndentSize = 4,
+    },
 })
 
 vim.lsp.enable("hls")

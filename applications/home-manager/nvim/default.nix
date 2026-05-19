@@ -26,6 +26,7 @@
     nil
     nixfmt
     tinymist
+    typstyle
     websocat
     haskell-language-server
     fourmolu
