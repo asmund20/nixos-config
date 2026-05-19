@@ -14,3 +14,6 @@ vim.keymap.set("n", "<leader>ts", ":TypstPreview slide<CR>")
 vim.keymap.set("n", "<leader>tc", ":TypstPreviewSyncCursor<CR>")
 
 vim.opt_local.formatoptions:append("t")
+
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
