@@ -130,6 +130,8 @@
     ant
     jdk
     ergogen
+    rustc
+    cargo
   ];
 
   environment.shells = [
