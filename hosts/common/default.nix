@@ -125,6 +125,7 @@
     hyprlock
     hyprshot
 
+    gcc
     ghc
     cabal-install
     ant
@@ -132,6 +133,8 @@
     ergogen
     rustc
     cargo
+    clippy
+    rustfmt
   ];
 
   environment.shells = [

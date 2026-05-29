@@ -117,3 +117,28 @@ vim.lsp.config("jdtls", {
     filetypes = { "java" },
     root_markers = { "mvnw", "gradlew", "settings.gradle", "settings.gradle.kts", ".git", "build.xml", "pom.xml", "build.gradle", "build.gradle.kts" },
 })
+
+vim.lsp.enable("rust_analyzer")
+vim.lsp.config("rust_analyzer", {
+    cmd = { "rust-analyzer" },
+    filetypes = { "rust" },
+    root_markers = { "Cargo.lock" },
+    settings = {
+        ["rust-analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true
+            },
+        },
+    },
+})
