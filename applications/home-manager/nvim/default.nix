@@ -7,6 +7,9 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    withPython3 = false;
+    withRuby = false;
+    withNodeJs = false;
     plugins = with pkgs.vimPlugins; [
       nvim-cmp
       cmp-nvim-lsp
