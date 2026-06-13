@@ -125,11 +125,16 @@
     hyprlock
     hyprshot
 
+    gcc
     ghc
     cabal-install
     ant
     jdk
     ergogen
+    rustc
+    cargo
+    clippy
+    rustfmt
   ];
 
   environment.shells = [

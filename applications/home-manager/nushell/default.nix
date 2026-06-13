@@ -8,7 +8,10 @@
     environmentVariables = {
       PROMPT_COMMAND_RIGHT = "";
     };
-    extraConfig = builtins.readFile ./git-completions.nu;
+    extraConfig = builtins.readFile ./git-completions.nu + ''
+      $env.CARGO_HOME = "~/.cargo"
+      $env.path ++= [(echo $env.CARGO_HOME | path join "bin")]
+    '';
 
     shellAliases = {
       # Git stuff
