@@ -17,10 +17,7 @@ in
     enable = true;
     settings = {
       preload = [ "${config.xdg.dataHome}/wallpapers/main.jpg" ];
-      wallpaper = {
-        monitor = "";
-        path = [ "${config.xdg.dataHome}/wallpapers/main.jpg" ];
-      };
+      wallpaper = [ ",${config.xdg.dataHome}/wallpapers/main.jpg" ];
       splash = false;
     };
   };
