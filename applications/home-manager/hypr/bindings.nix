@@ -22,6 +22,12 @@
         "SUPER SHIFT ALT, K, movecurrentworkspacetomonitor, u"
         "SUPER SHIFT ALT, J, movecurrentworkspacetomonitor, d"
 
+        # Resize window
+        "SUPER ALT, H, resizeactive, -25 0"
+        "SUPER ALT, L, resizeactive, 25 0"
+        "SUPER ALT, K, resizeactive, 0 -25"
+        "SUPER ALT, J, resizeactive, 0 25"
+
         # Switch window with the one next to it
         "SUPER SHIFT, H, swapwindow, l"
         "SUPER SHIFT, L, swapwindow, r"
