@@ -24,6 +24,21 @@
 
   networking.hostName = "asmund-nixos-desktop";
 
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [ mesa ];
+  };
+
+  environment.systemPackages = with pkgs; [
+    xwayland
+    vulkan-tools
+    mesa
+  ];
+
+  users.users.asmund.packages = with pkgs; [
+    steam
+  ];
+
   my.hyprlock.enableFingerprint = false;
 
   # This value determines the NixOS release from which the default
