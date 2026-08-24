@@ -36,6 +36,9 @@
       TODO = "grep -R 'TODO' .";
 
       copy = "wl-copy";
+
+      kanata-stop = "sudo systemctl stop kanata-internalKeyboard.service";
+      kanata-start = "sudo systemctl start kanata-internalKeyboard.service";
     };
   };
 }
