@@ -5,7 +5,7 @@
         # Open stuff
         "SUPER, T, exec, ghostty"
         "SUPER, B, exec, zen"
-        "SUPER, SPACE, exec, rofi -show drun -show-icons"
+        "SUPER, SPACE, exec, hyprlauncher"
 
         # Hyprlock
         "SUPER, C, exec, hyprlock"

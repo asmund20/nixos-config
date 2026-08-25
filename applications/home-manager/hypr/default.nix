@@ -10,5 +10,8 @@
   ];
   wayland.windowManager.hyprland = {
     enable = true;
+    extraConfig = ''
+      exec-once = hyprlauncher -d
+    '';
   };
 }

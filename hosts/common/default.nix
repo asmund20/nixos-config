@@ -114,7 +114,7 @@
     unzip
     wl-clipboard
     btop
-    rofi
+    hyprlauncher
     bat
     python3
     typst
