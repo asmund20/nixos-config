@@ -123,6 +123,7 @@
     power-profiles-daemon
     hyprlock
     hyprshot
+    kitty
 
     gcc
     ghc
