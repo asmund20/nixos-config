@@ -1,7 +1,14 @@
-{ lib }:
+{ lib, ... }:
 
 let
-  mklua = lib.generators.mkLuaInline;
+  # Provide a backward-compatible concatMapAttrsToList if the lib doesn't include it.
+  concatMapAttrsToList =
+    if lib ? concatMapAttrsToList then lib.concatMapAttrsToList
+    else lib.concatMapAttrsToListFallback or (attrF: attrs:
+      # mapAttrsToList is pretty standard; build a single list-of-lists then concat
+      builtins.concatLists (lib.mapAttrsToList (name: val: attrF name val) attrs)
+    );
+
   mkLua = lib.generators.mkLuaInline;
 
   directions = {
@@ -12,31 +19,29 @@ let
   };
 
   # generate directional bindings: focus, move window, move workspace (monitor)
-  bindingsFromDirections = lib.concatLists [
-    # iterate attr names in a stable order
-    for d in builtins.attrNames directions do
-      let k = builtins.getAttr d directions in
-      [
-        {
-          _args = [
-            (mklua ("mod .. \" + " + k + "\""))
-            (mkLua ("hl.dsp.focus({direction = \"" + d + "\"})"))
-          ];
-        }
-        {
-          _args = [
-            (mklua ("mod .. \" + SHIFT + " + k + "\""))
-            (mkLua ("hl.dsp.window.move({direction = \"" + d + "\"})"))
-          ];
-        }
-        {
-          _args = [
-            (mklua ("mod .. \" + SHIFT + ALT + " + k + "\""))
-            (mkLua ("hl.dsp.workspace.move({monitor = \"" + d + "\"})"))
-          ];
-        }
-      ]
-  ];
+  bindingsFromDirections = concatMapAttrsToList (d: v:
+    let k = v; in
+    [
+      {
+        _args = [
+          (mkLua ("mod .. \" + " + k + "\""))
+          (mkLua ("hl.dsp.focus({direction = \"" + d + "\"})"))
+        ];
+      }
+      {
+        _args = [
+          (mkLua ("mod .. \" + SHIFT + " + k + "\""))
+          (mkLua ("hl.dsp.window.move({direction = \"" + d + "\"})"))
+        ];
+      }
+      {
+        _args = [
+          (mkLua ("mod .. \" + SHIFT + ALT + " + k + "\""))
+          (mkLua ("hl.dsp.workspace.move({monitor = \"" + d + "\"})"))
+        ];
+      }
+    ]
+  ) directions;
 
   # Workspaces 1..N
   workspaceCount = 10;
@@ -46,19 +51,19 @@ let
     [
       {
         _args = [
-          (mklua ("mod .. \" + " + toString n + "\""))
+          (mkLua ("mod .. \" + " + toString n + "\""))
           (mkLua ("hl.dsp.workspace.focus(" + toString n + ")"))
         ];
       }
       {
         _args = [
-          (mklua ("mod .. \" + SHIFT + " + toString n + "\""))
+          (mkLua ("mod .. \" + SHIFT + " + toString n + "\""))
           (mkLua ("hl.dsp.window.move({workspace = " + toString n + "})"))
         ];
       }
       {
         _args = [
-          (mklua ("mod .. \" + SHIFT + ALT + " + toString n + "\""))
+          (mkLua ("mod .. \" + SHIFT + ALT + " + toString n + "\""))
           (mkLua ("hl.dsp.window.move({workspace = " + toString n + "}, {follow=false})"))
         ];
       }
@@ -69,7 +74,7 @@ let
   staticBindings = [
     {
       _args = [
-        (mklua "mod .. \" + W\"")
+        (mkLua "mod .. \" + W\"")
         (mkLua "hl.dsp.window.close()")
         { locked = true; }
       ];
@@ -77,28 +82,28 @@ let
 
     {
       _args = [
-        (mklua "mod .. \" + T\"")
+        (mkLua "mod .. \" + T\"")
         (mkLua "hl.dsp.exec_cmd(\"ghostty\")")
       ];
     }
 
     {
       _args = [
-        (mklua "mod .. \" + B\"")
+        (mkLua "mod .. \" + B\"")
         (mkLua "hl.dsp.exec_cmd(\"zen\")")
       ];
     }
 
     {
       _args = [
-        (mklua "mod .. \" + SPACE\"")
+        (mkLua "mod .. \" + SPACE\"")
         (mkLua "hl.dsp.exec_cmd(\"hyprlauncher\")")
       ];
     }
 
     {
       _args = [
-        (mklua "mod .. \" + C\"")
+        (mkLua "mod .. \" + C\"")
         (mkLua "hl.dsp.exec_cmd(\"hyprlock\")")
       ];
     }
@@ -106,28 +111,28 @@ let
     # Resize window (explicit individual entries)
     {
       _args = [
-        (mklua "mod .. \" + ALT + h\"")
+        (mkLua "mod .. \" + ALT + h\"")
         (mkLua "hl.dsp.window.resize({x = -25, y = 0, relative=true})")
         { repeating = true; }
       ];
     }
     {
       _args = [
-        (mklua "mod .. \" + ALT + j\"")
+        (mkLua "mod .. \" + ALT + j\"")
         (mkLua "hl.dsp.window.resize({x = 0, y = 25, relative=true})")
         { repeating = true; }
       ];
     }
     {
       _args = [
-        (mklua "mod .. \" + ALT + k\"")
+        (mkLua "mod .. \" + ALT + k\"")
         (mkLua "hl.dsp.window.resize({x = 0, y = -25, relative=true})")
         { repeating = true; }
       ];
     }
     {
       _args = [
-        (mklua "mod .. \" + ALT + l\"")
+        (mkLua "mod .. \" + ALT + l\"")
         (mkLua "hl.dsp.window.resize({x = 25, y = 0, relative=true})")
         { repeating = true; }
       ];
@@ -205,7 +210,7 @@ in
         _var = "SUPER";
       };
 
-      bind = concatLists [
+      bind = lib.concatLists [
         staticBindings
         bindingsFromDirections
         workspaceBindings

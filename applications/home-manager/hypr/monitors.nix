@@ -9,7 +9,7 @@
         position = "auto",
         scale = 1,
         ''
-        ]
+        ];
       }
       {
         _args = [
@@ -19,7 +19,7 @@
         position = "auto-down",
         scale = 1,
         ''
-        ]
+        ];
       }
       {
         _args = [
@@ -29,7 +29,7 @@
         position = "auto-up",
         scale = 1,
         ''
-        ]
+        ];
       }
       {
         _args = [
@@ -39,7 +39,7 @@
         position = "1440x800",
         scale = 1,
         ''
-        ]
+        ];
       }
       {
         _args = [
@@ -50,7 +50,7 @@
         scale = 1,
         transform = 1,
         ''
-        ]
+        ];
       }
     ];
   };
