@@ -12,33 +12,31 @@ let
   };
 
   # generate directional bindings: focus, move window, move workspace (monitor)
-  bindingsFromDirections = concatLists (
-    [
-      # for stable order iterate attrNames
-      for d in builtins.attrNames directions:
-        let k = builtins.getAttr d directions; in
-        [
-          {
-            _args = [
-              (mklua ("mod .. \" + " + k + "\""))
-              (mkLua ("hl.dsp.focus({direction = \"" + d + "\"})"))
-            ];
-          }
-          {
-            _args = [
-              (mklua ("mod .. \" + SHIFT + " + k + "\""))
-              (mkLua ("hl.dsp.window.move({direction = \"" + d + "\"})"))
-            ];
-          }
-          {
-            _args = [
-              (mklua ("mod .. \" + SHIFT + ALT + " + k + "\""))
-              (mkLua ("hl.dsp.workspace.move({monitor = \"" + d + "\"})"))
-            ];
-          }
-        ]
-    ]
-  );
+  bindingsFromDirections = lib.concatLists [
+    # iterate attr names in a stable order
+    for d in builtins.attrNames directions do
+      let k = builtins.getAttr d directions in
+      [
+        {
+          _args = [
+            (mklua ("mod .. \" + " + k + "\""))
+            (mkLua ("hl.dsp.focus({direction = \"" + d + "\"})"))
+          ];
+        }
+        {
+          _args = [
+            (mklua ("mod .. \" + SHIFT + " + k + "\""))
+            (mkLua ("hl.dsp.window.move({direction = \"" + d + "\"})"))
+          ];
+        }
+        {
+          _args = [
+            (mklua ("mod .. \" + SHIFT + ALT + " + k + "\""))
+            (mkLua ("hl.dsp.workspace.move({monitor = \"" + d + "\"})"))
+          ];
+        }
+      ]
+  ];
 
   # Workspaces 1..N
   workspaceCount = 10;
