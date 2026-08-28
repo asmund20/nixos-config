@@ -2,7 +2,7 @@
 {
   programs.git.enable = true;
   programs.neovim = {
-    enable = true;
+    enable = false;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
