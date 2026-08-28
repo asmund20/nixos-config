@@ -1,90 +1,217 @@
+{ lib }:
+
+let
+  mklua = lib.generators.mkLuaInline;
+  mkLua = lib.generators.mkLuaInline;
+
+  directions = {
+    left  = "h";
+    right = "l";
+    up    = "k";
+    down  = "j";
+  };
+
+  # generate directional bindings: focus, move window, move workspace (monitor)
+  bindingsFromDirections = concatLists (
+    [
+      # for stable order iterate attrNames
+      for d in builtins.attrNames directions:
+        let k = builtins.getAttr d directions; in
+        [
+          {
+            _args = [
+              (mklua ("mod .. \" + " + k + "\""))
+              (mkLua ("hl.dsp.focus({direction = \"" + d + "\"})"))
+            ];
+          }
+          {
+            _args = [
+              (mklua ("mod .. \" + SHIFT + " + k + "\""))
+              (mkLua ("hl.dsp.window.move({direction = \"" + d + "\"})"))
+            ];
+          }
+          {
+            _args = [
+              (mklua ("mod .. \" + SHIFT + ALT + " + k + "\""))
+              (mkLua ("hl.dsp.workspace.move({monitor = \"" + d + "\"})"))
+            ];
+          }
+        ]
+    ]
+  );
+
+  # Workspaces 1..N
+  workspaceCount = 10;
+  workspaceNumbers = builtins.genList (i: i + 1) workspaceCount;  # [1 2 ... N]
+
+  workspaceBindings = lib.concatMap (n:
+    [
+      {
+        _args = [
+          (mklua ("mod .. \" + " + toString n + "\""))
+          (mkLua ("hl.dsp.workspace.focus(" + toString n + ")"))
+        ];
+      }
+      {
+        _args = [
+          (mklua ("mod .. \" + SHIFT + " + toString n + "\""))
+          (mkLua ("hl.dsp.window.move({workspace = " + toString n + "})"))
+        ];
+      }
+      {
+        _args = [
+          (mklua ("mod .. \" + SHIFT + ALT + " + toString n + "\""))
+          (mkLua ("hl.dsp.window.move({workspace = " + toString n + "}, {follow=false})"))
+        ];
+      }
+    ]
+  ) workspaceNumbers;
+
+  # static bindings you had (fixed typos and use mkLua consistently)
+  staticBindings = [
+    {
+      _args = [
+        (mklua "mod .. \" + W\"")
+        (mkLua "hl.dsp.window.close()")
+        { locked = true; }
+      ];
+    }
+
+    {
+      _args = [
+        (mklua "mod .. \" + T\"")
+        (mkLua "hl.dsp.exec_cmd(\"ghostty\")")
+      ];
+    }
+
+    {
+      _args = [
+        (mklua "mod .. \" + B\"")
+        (mkLua "hl.dsp.exec_cmd(\"zen\")")
+      ];
+    }
+
+    {
+      _args = [
+        (mklua "mod .. \" + SPACE\"")
+        (mkLua "hl.dsp.exec_cmd(\"hyprlauncher\")")
+      ];
+    }
+
+    {
+      _args = [
+        (mklua "mod .. \" + C\"")
+        (mkLua "hl.dsp.exec_cmd(\"hyprlock\")")
+      ];
+    }
+
+    # Resize window (explicit individual entries)
+    {
+      _args = [
+        (mklua "mod .. \" + ALT + h\"")
+        (mkLua "hl.dsp.window.resize({x = -25, y = 0, relative=true})")
+        { repeating = true; }
+      ];
+    }
+    {
+      _args = [
+        (mklua "mod .. \" + ALT + j\"")
+        (mkLua "hl.dsp.window.resize({x = 0, y = 25, relative=true})")
+        { repeating = true; }
+      ];
+    }
+    {
+      _args = [
+        (mklua "mod .. \" + ALT + k\"")
+        (mkLua "hl.dsp.window.resize({x = 0, y = -25, relative=true})")
+        { repeating = true; }
+      ];
+    }
+    {
+      _args = [
+        (mklua "mod .. \" + ALT + l\"")
+        (mkLua "hl.dsp.window.resize({x = 25, y = 0, relative=true})")
+        { repeating = true; }
+      ];
+    }
+  ];
+
+  # convert previous bindel (exec strings) into bind entries that exec and repeat
+  volAndBrgtBindings = [
+    # volume
+    {
+      _args = [
+        ",XF86AudioRaiseVolume"
+        (mkLua "hl.dsp.exec_cmd(\"vol_and_brgt volume +\")")
+        { repeating = true; }
+      ];
+    }
+    {
+      _args = [
+        ",XF86AudioLowerVolume"
+        (mkLua "hl.dsp.exec_cmd(\"vol_and_brgt volume -\")")
+        { repeating = true; }
+      ];
+    }
+    {
+      _args = [
+        ",XF86AudioMute"
+        (mkLua "hl.dsp.exec_cmd(\"vol_and_brgt volume m\")")
+        { repeating = true; }
+      ];
+    }
+    {
+      _args = [
+        "SUPER + U"
+        (mkLua "hl.dsp.exec_cmd(\"vol_and_brgt volume +\")")
+        { repeating = true; }
+      ];
+    }
+    {
+      _args = [
+        "SUPER + D"
+        (mkLua "hl.dsp.exec_cmd(\"vol_and_brgt volume -\")")
+        { repeating = true; }
+      ];
+    }
+    {
+      _args = [
+        "SUPER + M"
+        (mkLua "hl.dsp.exec_cmd(\"vol_and_brgt volume m\")")
+        { repeating = true; }
+      ];
+    }
+
+    # brightness
+    {
+      _args = [
+        ",XF86MonBrightnessUp"
+        (mkLua "hl.dsp.exec_cmd(\"vol_and_brgt brightness +\")")
+        { repeating = true; }
+      ];
+    }
+    {
+      _args = [
+        ",XF86MonBrightnessDown"
+        (mkLua "hl.dsp.exec_cmd(\"vol_and_brgt brightness -\")")
+        { repeating = true; }
+      ];
+    }
+  ];
+
+in
 {
   wayland.windowManager.hyprland = {
     settings = {
-      bind = [
-        # Open stuff
-        "SUPER, T, exec, ghostty"
-        "SUPER, B, exec, zen"
-        "SUPER, SPACE, exec, hyprlauncher"
+      mod = {
+        _var = "SUPER";
+      };
 
-        # Hyprlock
-        "SUPER, C, exec, hyprlock"
-
-        # Move focus and windows
-        "SUPER, H, movefocus, l"
-        "SUPER, L, movefocus, r"
-        "SUPER, K, movefocus, u"
-        "SUPER, J, movefocus, d"
-
-        # Move workspace to other monitor
-        "SUPER SHIFT ALT, H, movecurrentworkspacetomonitor, l"
-        "SUPER SHIFT ALT, L, movecurrentworkspacetomonitor, r"
-        "SUPER SHIFT ALT, K, movecurrentworkspacetomonitor, u"
-        "SUPER SHIFT ALT, J, movecurrentworkspacetomonitor, d"
-
-        # Resize window
-        "SUPER ALT, H, resizeactive, -25 0"
-        "SUPER ALT, L, resizeactive, 25 0"
-        "SUPER ALT, K, resizeactive, 0 -25"
-        "SUPER ALT, J, resizeactive, 0 25"
-
-        # Switch window with the one next to it
-        "SUPER SHIFT, H, swapwindow, l"
-        "SUPER SHIFT, L, swapwindow, r"
-        "SUPER SHIFT, K, swapwindow, u"
-        "SUPER SHIFT, J, swapwindow, d"
-
-        # Switch workspace
-        "SUPER, code:10, workspace, 1"
-        "SUPER, code:11, workspace, 2"
-        "SUPER, code:12, workspace, 3"
-        "SUPER, code:13, workspace, 4"
-        "SUPER, code:14, workspace, 5"
-        "SUPER, code:15, workspace, 6"
-        "SUPER, code:16, workspace, 7"
-        "SUPER, code:17, workspace, 8"
-        "SUPER, code:18, workspace, 9"
-        "SUPER, code:19, workspace, 10"
-
-        # Move active window to workspace
-        "SUPER SHIFT, code:10, movetoworkspace, 1"
-        "SUPER SHIFT, code:11, movetoworkspace, 2"
-        "SUPER SHIFT, code:12, movetoworkspace, 3"
-        "SUPER SHIFT, code:13, movetoworkspace, 4"
-        "SUPER SHIFT, code:14, movetoworkspace, 5"
-        "SUPER SHIFT, code:15, movetoworkspace, 6"
-        "SUPER SHIFT, code:16, movetoworkspace, 7"
-        "SUPER SHIFT, code:17, movetoworkspace, 8"
-        "SUPER SHIFT, code:18, movetoworkspace, 9"
-        "SUPER SHIFT, code:19, movetoworkspace, 10"
-
-        # Move active window silently to workspace
-        "SUPER SHIFT ALT, code:10, movetoworkspacesilent, 1"
-        "SUPER SHIFT ALT, code:11, movetoworkspacesilent, 2"
-        "SUPER SHIFT ALT, code:12, movetoworkspacesilent, 3"
-        "SUPER SHIFT ALT, code:13, movetoworkspacesilent, 4"
-        "SUPER SHIFT ALT, code:14, movetoworkspacesilent, 5"
-        "SUPER SHIFT ALT, code:15, movetoworkspacesilent, 6"
-        "SUPER SHIFT ALT, code:16, movetoworkspacesilent, 7"
-        "SUPER SHIFT ALT, code:17, movetoworkspacesilent, 8"
-        "SUPER SHIFT ALT, code:18, movetoworkspacesilent, 9"
-        "SUPER SHIFT ALT, code:19, movetoworkspacesilent, 10"
-
-        # Close window
-        "SUPER, W, killactive"
-      ];
-      bindel = [
-        # Volume
-        ",XF86AudioRaiseVolume,exec,vol_and_brgt volume +"
-        ",XF86AudioLowerVolume,exec,vol_and_brgt volume -"
-        ",XF86AudioMute,exec,vol_and_brgt volume m"
-        "SUPER,U,exec,vol_and_brgt volume +"
-        "SUPER,D,exec,vol_and_brgt volume -"
-        "SUPER,M,exec,vol_and_brgt volume m"
-
-        # Brightness
-        ",XF86MonBrightnessUp,exec,vol_and_brgt brightness +"
-        ",XF86MonBrightnessDown,exec,vol_and_brgt brightness -"
+      bind = concatLists [
+        staticBindings
+        bindingsFromDirections
+        workspaceBindings
+        volAndBrgtBindings
       ];
     };
   };

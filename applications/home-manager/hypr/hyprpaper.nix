@@ -20,6 +20,13 @@ in
       wallpaper = [ ",${config.xdg.dataHome}/wallpapers/main.jpg" ];
       splash = false;
     };
+    extraConfig = ''
+      wallpaper {
+        monitor =
+        path = ${config.xdg.dataHome}/wallpapers/main.jpg}
+        fit_mode = cover
+      }
+    '';
   };
 
 }
