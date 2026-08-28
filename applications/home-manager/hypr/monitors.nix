@@ -5,7 +5,7 @@
         _args = [
         ''
         output = "",
-        mode = "preferred,
+        mode = "preferred",
         position = "auto",
         scale = 1,
         ''
@@ -15,7 +15,7 @@
         _args = [
         ''
         output = "eDP-1",
-        mode = "preferred,
+        mode = "preferred",
         position = "auto-down",
         scale = 1,
         ''
@@ -25,7 +25,7 @@
         _args = [
         ''
         output = "HDMI-A-1",
-        mode = "preferred,
+        mode = "preferred",
         position = "auto-up",
         scale = 1,
         ''
