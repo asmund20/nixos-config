@@ -18,7 +18,6 @@ in
     settings = {
       preload = [ "${config.xdg.dataHome}/wallpapers/main.jpg" ];
       wallpaper = [ 
-        ",${config.xdg.dataHome}/wallpapers/main.jpg" 
         {
           monitor = "";
           fit_mode = "cover";
