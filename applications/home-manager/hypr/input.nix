@@ -1,34 +1,32 @@
 {
   wayland.windowManager.hyprland = {
-    extraConfig = ''
-      hl.config({
+    settings = {
+      config = {
         input = {
-          kb_layout = "no",
-          kb_variant = "", --"nodeadkeys",
-          kb_model = "",
-          kb_options = "",
-          kb_rules = "",
-          repeat_rate = 40,
-          repeat_delay = 600,
-          sensitivity = 0,
+          kb_layout = "no";
+          kb_variant = "nodeadkeys";
+          repeat_rate = 40;
+          repeat_delay = 600;
+          sensitivity = 0;
 
-          follow_mouse = 1,
+          follow_mouse = 1;
 
           touchpad = {
-            natural_scroll = true,
-            scroll_factor = 0.5,
-            clickfinger_behavior = true,
-          },
-        },
-        cursor = {
-          hide_on_key_press = true,
-        },
-      })
+            natural_scroll = true;
+            scroll_factor = 0.5;
+            clickfinger_behavior = true;
+          };
+        };
 
-      hl.device({
-        name = "compx-mad-8k-dongle-1",
-        sensitivity = -0.7,
-      })
-    '';
+        cursor = {
+          hide_on_key_press = true;
+        };
+      };
+
+      device = {
+        name = "compx-mad-8k-dongle-1";
+        sensitivity = -0.7;
+      };
+    };
   };
 }
