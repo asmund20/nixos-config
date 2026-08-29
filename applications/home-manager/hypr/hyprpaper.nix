@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }:
 let
@@ -17,7 +16,7 @@ in
     enable = true;
     settings = {
       preload = [ "${config.xdg.dataHome}/wallpapers/main.jpg" ];
-      wallpaper = [ 
+      wallpaper = [
         {
           monitor = "";
           fit_mode = "cover";
