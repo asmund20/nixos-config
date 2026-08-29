@@ -6,6 +6,7 @@
       cursor-invert-fg-bg = true;
       background-opacity = 0.91;
       theme = "Catppuccin Macchiato";
+      font-size = 13;
 
       copy-on-select = "clipboard";
 

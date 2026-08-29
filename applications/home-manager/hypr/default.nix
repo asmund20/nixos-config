@@ -2,16 +2,14 @@
   imports = [
     ./bindings.nix
     ./hypridle.nix
+    ./hyprlauncher.nix
     ./hyprlock.nix
     ./hyprpaper.nix
     ./input.nix
-    ./misc.nix
     ./monitors.nix
   ];
   wayland.windowManager.hyprland = {
     enable = true;
-    extraConfig = ''
-      exec-once = hyprlauncher -d
-    '';
+    configType = "lua";
   };
 }

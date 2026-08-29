@@ -28,9 +28,6 @@
     tinymist
     typstyle
     websocat
-    haskell-language-server
-    fourmolu
-    jdt-language-server
     rust-analyzer
   ];
 

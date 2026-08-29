@@ -30,7 +30,6 @@
   services.displayManager = {
     gdm = {
       enable = true;
-      wayland = true;
     };
 
     defaultSession = "hyprland";
@@ -124,6 +123,8 @@
     power-profiles-daemon
     hyprlock
     hyprshot
+    kitty
+    vim
 
     gcc
     ghc
@@ -165,4 +166,6 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+
+  system.stateVersion = "26.05"; # Did you read the comment?
 }

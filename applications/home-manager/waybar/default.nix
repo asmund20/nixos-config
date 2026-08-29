@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
 
   home.packages = with pkgs; [
@@ -131,9 +131,12 @@
   };
   wayland.windowManager.hyprland = {
     settings = {
-      "exec-once" = [
-        "waybar"
-      ];
+      on = {
+        _args = [
+          "hyprland.start"
+          (lib.generators.mkLuaInline "function()\n  hl.exec_cmd(\"waybar\")\nend")
+        ];
+      };
     };
   };
 }
