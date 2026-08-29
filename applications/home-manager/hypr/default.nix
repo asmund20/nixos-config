@@ -5,7 +5,7 @@
     ./hyprlauncher.nix
     ./hyprlock.nix
     ./hyprpaper.nix
-    # ./input.nix
+    ./input.nix
     # ./misc.nix
     # ./monitors.nix
   ];

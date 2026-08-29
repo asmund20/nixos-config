@@ -8,7 +8,7 @@
           kb_model = "",
           kb_options = "",
           kb_rules = "",
-          repeat_rate = 40:
+          repeat_rate = 40,
           repeat_delay = 600,
           sensitivity = 0,
 
