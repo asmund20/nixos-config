@@ -1,49 +1,55 @@
-{ lib, ... }:
-let 
-  mkLua = lib.generators.mkLuaInline;
-in
 {
   wayland.windowManager.hyprland.settings = {
     monitor = [
       {
         _args = [
-	  mkLua "output = \"\""
-	  mkLua "mode = \"preferred\""
-	  mkLua "position = \"auto\""
-	  mkLua "scale = 1"
+        ''
+        output = "",
+        mode = "preferred",
+        position = "auto",
+        scale = 1,
+        ''
         ];
       }
       {
         _args = [
-	  mkLua "output = \"eDP-1\""
-	  mkLua "mode = \"preferred\""
-	  mkLua "position = \"auto-down\""
-	  mkLua "scale = 1"
+        ''
+        output = "eDP-1",
+        mode = "preferred",
+        position = "auto-down",
+        scale = 1,
+        ''
         ];
       }
       {
         _args = [
-	  mkLua "output = \"HDMI-A-1\""
-	  mkLua "mode = \"preferred\""
-	  mkLua "position = \"auto-up\""
-	  mkLua "scale = 1"
+        ''
+        output = "HDMI-A-1",
+        mode = "preferred",
+        position = "auto-up",
+        scale = 1,
+        ''
         ];
       }
       {
         _args = [
-	  mkLua "output = \"desc:ASUSTek COMPUTER INC ASUS VG249 0x000375FB\""
-	  mkLua "mode = \"1920x1080\""
-	  mkLua "position = \"1440x800\""
-	  mkLua "scale = 1"
+        ''
+        output = "desc:ASUSTek COMPUTER INC ASUS VG249 0x000375FB",
+        mode = "1920x1080,
+        position = "1440x800",
+        scale = 1,
+        ''
         ];
       }
       {
         _args = [
-	  mkLua "output = \"desc:Dell Inc. DELL U2717D J0XYN95AA06L\""
-	  mkLua "mode = \"2560x1440\""
-	  mkLua "position = \"0x0\""
-	  mkLua "scale = 1"
-	  mkLua "transform = 1"
+        ''
+        output = "desc:Dell Inc. DELL U2717D J0XYN95AA06L",
+        mode = "2560x1440",
+        position = "0x0",
+        scale = 1,
+        transform = 1,
+        ''
         ];
       }
     ];
