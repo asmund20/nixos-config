@@ -5,14 +5,14 @@ let
 
 in
 {
-  wayland.windowManager.hyprland = {
+  wayland.windowManager.hyprland.settings = {
     bind = [
       {
         _args = [
-          "SUPER + T"
+          "SUPER + T"
           (mkLua "hl.dsp.exec_cmd(\"ghostty\")")
         ];
-      };
+      }
     ];
   };
 }
