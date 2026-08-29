@@ -7,6 +7,18 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    plugins = with pkgs.vimPlugins; [
+      nvim-cmp
+      cmp-nvim-lsp
+      nvim-treesitter.withAllGrammars
+      harpoon2
+      catppuccin-nvim
+      typst-preview-nvim
+      autoclose-nvim
+      telescope-nvim
+      conform-nvim
+      nvim-surround
+    ];
   };
 
   # lsps and other neovim depenencies
@@ -16,9 +28,6 @@
     tinymist
     typstyle
     websocat
-    haskell-language-server
-    fourmolu
-    jdt-language-server
     rust-analyzer
   ];
 
