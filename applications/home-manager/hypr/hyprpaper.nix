@@ -21,7 +21,7 @@ in
         {
           monitor = "";
           fit_mode = "cover";
-          path = "${config.xdg.dataHome}/wallpapers/main.jpg}";
+          path = "${config.xdg.dataHome}/wallpapers/main.jpg";
         }
       ];
       splash = false;
