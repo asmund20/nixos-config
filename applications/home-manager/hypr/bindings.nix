@@ -1,6 +1,7 @@
 { lib, ... }:
 
 let
+  mod = a: b: a - (b * (a / b));
   # Provide a backward-compatible concatMapAttrsToList if the lib doesn't include it.
   concatMapAttrsToList =
     if lib ? concatMapAttrsToList then lib.concatMapAttrsToList
@@ -51,19 +52,19 @@ let
     [
       {
         _args = [
-          (mkLua ("mod .. \" + " + toString n + "\""))
-          (mkLua ("hl.dsp.workspace.focus(" + toString n + ")"))
+          (mkLua ("mod .. \" + " + toString (mod n 10) + "\""))
+          (mkLua ("hl.dsp.focus({workspace = " + toString n + "})"))
         ];
       }
       {
         _args = [
-          (mkLua ("mod .. \" + SHIFT + " + toString n + "\""))
+          (mkLua ("mod .. \" + SHIFT + " + toString (mod n 10) + "\""))
           (mkLua ("hl.dsp.window.move({workspace = " + toString n + "})"))
         ];
       }
       {
         _args = [
-          (mkLua ("mod .. \" + SHIFT + ALT + " + toString n + "\""))
+          (mkLua ("mod .. \" + SHIFT + ALT + " + toString (mod n 10) + "\""))
           (mkLua ("hl.dsp.window.move({workspace = " + toString n + "}, {follow=false})"))
         ];
       }
@@ -144,21 +145,21 @@ let
     # volume
     {
       _args = [
-        ",XF86AudioRaiseVolume"
+        "XF86AudioRaiseVolume"
         (mkLua "hl.dsp.exec_cmd(\"vol_and_brgt volume +\")")
         { repeating = true; }
       ];
     }
     {
       _args = [
-        ",XF86AudioLowerVolume"
+        "XF86AudioLowerVolume"
         (mkLua "hl.dsp.exec_cmd(\"vol_and_brgt volume -\")")
         { repeating = true; }
       ];
     }
     {
       _args = [
-        ",XF86AudioMute"
+        "XF86AudioMute"
         (mkLua "hl.dsp.exec_cmd(\"vol_and_brgt volume m\")")
         { repeating = true; }
       ];
@@ -188,14 +189,14 @@ let
     # brightness
     {
       _args = [
-        ",XF86MonBrightnessUp"
+        "XF86MonBrightnessUp"
         (mkLua "hl.dsp.exec_cmd(\"vol_and_brgt brightness +\")")
         { repeating = true; }
       ];
     }
     {
       _args = [
-        ",XF86MonBrightnessDown"
+        "XF86MonBrightnessDown"
         (mkLua "hl.dsp.exec_cmd(\"vol_and_brgt brightness -\")")
         { repeating = true; }
       ];
