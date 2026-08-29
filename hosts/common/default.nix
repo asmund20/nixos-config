@@ -124,6 +124,7 @@
     hyprlock
     hyprshot
     kitty
+    vim
 
     gcc
     ghc
