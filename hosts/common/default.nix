@@ -108,34 +108,26 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovim
+    vim
     nushell
     spotify
     unzip
     wl-clipboard
     btop
-    hyprlauncher
     bat
-    python3
-    typst
     tree
     brightnessctl
     pamixer
-    power-profiles-daemon
     hyprlock
     hyprshot
     kitty
-    vim
 
+    python3
+    typst
     gcc
     ghc
-    cabal-install
-    ant
-    jdk
     ergogen
     rustc
-    cargo
-    clippy
-    rustfmt
   ];
 
   environment.shells = [
@@ -165,7 +157,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
 
   system.stateVersion = "26.05"; # Did you read the comment?
 }
