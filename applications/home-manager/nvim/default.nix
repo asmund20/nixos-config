@@ -11,7 +11,7 @@
       nvim-cmp
       cmp-nvim-lsp
       nvim-treesitter.withAllGrammars
-      harpoon2
+      grapple-nvim
       catppuccin-nvim
       typst-preview-nvim
       autoclose-nvim
