@@ -1,8 +1,12 @@
--- lsp_attach is where you enable features that only work
--- if there is a language server active in the file
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local bufnr = args.buf
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+    if not client then
+        return
+    end
+
     local opts = { buffer = bufnr }
 
 	vim.keymap.set("n", "gd", function()
@@ -35,6 +39,48 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	vim.keymap.set("i", "<C-h>", function()
 		vim.lsp.buf.signature_help()
 	end, opts)
+    -- Tinymist-specific mappings
+    if client and client.name == "tinymist" then
+
+      -- Normal mode preview
+      vim.keymap.set("n", "<leader>tt", ":TypstPreview<CR>")
+      -- Slide mode preview
+      vim.keymap.set("n", "<leader>ts", ":TypstPreview slide<CR>")
+      -- Sync cursor
+      vim.keymap.set("n", "<leader>tc", ":TypstPreviewSyncCursor<CR>")
+
+      vim.keymap.set("n", "<leader>tp", function()
+        client:exec_cmd({
+          title = "Pin main Typst file",
+          command = "tinymist.pinMain",
+          arguments = {
+            vim.api.nvim_buf_get_name(bufnr),
+          },
+        }, {
+          bufnr = bufnr,
+        })
+      end, {
+        buffer = bufnr,
+        desc = "[T]inymist [P]in",
+        noremap = true,
+      })
+
+      vim.keymap.set("n", "<leader>tu", function()
+        client:exec_cmd({
+          title = "Unpin main Typst file",
+          command = "tinymist.pinMain",
+          arguments = {
+            vim.v.null,
+          },
+        }, {
+          bufnr = bufnr,
+        })
+      end, {
+        buffer = bufnr,
+        desc = "[T]inymist [U]npin",
+        noremap = true,
+      })
+    end
   end,
 })
 
