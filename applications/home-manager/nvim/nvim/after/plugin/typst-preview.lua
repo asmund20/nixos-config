@@ -13,6 +13,8 @@ require 'typst-preview'.setup {
     -- Whether the preview will follow the cursor in the source file
     follow_cursor = true,
 
+    partial_rendering = true,
+
     -- Provide the path to binaries for dependencies.
     -- Setting this will skip the download of the binary by the plugin.
     -- Warning: Be aware that your version might be older than the one
