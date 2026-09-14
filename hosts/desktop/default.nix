@@ -9,6 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     ../common
+    ../../applications/native/minecraft-server.nix
   ];
 
   boot.loader.limine = {
