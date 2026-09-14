@@ -4,10 +4,17 @@
   inputs,
   ...
 }:
+let
+  port = 25565;
+in
 
 {
   users.users.asmund.packages = with pkgs; [
     prismlauncher
+  ];
+
+  networking.firewall.allowedTCPPorts = [
+    port
   ];
 
   services.minecraft-server = {
@@ -59,7 +66,7 @@
       "player-idle-timeout" = 0;
       "prevent-proxy-connections" = false;
       pvp = true;
-      "query.port" = 25565;
+      "query.port" = port;
       rate-limit = 0;
       "rcon.port" = 25575;
       region-file-compression = "deflate";
