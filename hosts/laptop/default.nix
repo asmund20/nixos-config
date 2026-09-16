@@ -13,5 +13,9 @@
 
   networking.hostName = "asmund-nixos-laptop";
 
+  users.users.asmund.packages = with pkgs; [
+    prismlauncher
+  ];
+
   my.hyprlock.enableFingerprint = true;
 }
