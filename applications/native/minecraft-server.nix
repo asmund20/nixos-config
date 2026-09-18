@@ -50,7 +50,7 @@ in
       hardcore = false;
       "hide-online-players" = false;
       "initial-enabled-packs" = "vanilla";
-      "level-name" = "Med Mari min";
+      "level-name" = "Server2";
       "level-type" = "minecraft\:normal";
       "log-ips" = true;
       "management-server-enabled" = false;
