@@ -120,6 +120,7 @@
     hyprlock
     hyprshot
     kitty
+    librewolf
 
     python3
     typst
