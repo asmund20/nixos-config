@@ -43,11 +43,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client and client.name == "tinymist" then
 
       -- Normal mode preview
-      vim.keymap.set("n", "<leader>tt", ":TypstPreview<CR>")
+      vim.keymap.set("n", "<leader>tt", ":TypstPreview<CR>", {buffer = bufnr})
       -- Slide mode preview
-      vim.keymap.set("n", "<leader>ts", ":TypstPreview slide<CR>")
+      vim.keymap.set("n", "<leader>ts", ":TypstPreview slide<CR>", {buffer = bufnr})
       -- Sync cursor
-      vim.keymap.set("n", "<leader>tc", ":TypstPreviewSyncCursor<CR>")
+      vim.keymap.set("n", "<leader>tc", ":TypstPreviewSyncCursor<CR>", {buffer = bufnr})
 
       vim.keymap.set("n", "<leader>tp", function()
         client:exec_cmd({
@@ -188,3 +188,9 @@ vim.lsp.config("rust_analyzer", {
         },
     },
 })
+
+
+-- Typst help stuff
+local related_ns = vim.api.nvim_create_namespace("lsp_related_information")
+local related_cache = {}
+local related_targets = {}
