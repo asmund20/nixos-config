@@ -10,7 +10,6 @@
     plugins = with pkgs.vimPlugins; [
       nvim-cmp
       cmp-nvim-lsp
-      nvim-treesitter.withAllGrammars
       grapple-nvim
       catppuccin-nvim
       typst-preview-nvim
@@ -18,6 +17,10 @@
       telescope-nvim
       conform-nvim
       nvim-surround
+      nvim-treesitter-parsers.nix
+      nvim-treesitter-parsers.python
+      nvim-treesitter-parsers.typst
+      nvim-treesitter-parsers.rust
     ];
   };
 
