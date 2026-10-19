@@ -17,6 +17,7 @@
       telescope-nvim
       conform-nvim
       nvim-surround
+      vim-lark-syntax
       nvim-treesitter-parsers.nix
       nvim-treesitter-parsers.python
       nvim-treesitter-parsers.typst
