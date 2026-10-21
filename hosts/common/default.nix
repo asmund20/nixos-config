@@ -11,7 +11,6 @@
     inputs.home-manager.nixosModules.default
     ../../applications/native/fingerprint.nix
     ../../applications/native/kanata.nix
-    ../../applications/native/zen.nix
   ];
   # Bootloader.
   boot.loader.efi.canTouchEfiVariables = true;
@@ -73,8 +72,6 @@
       "networkmanager"
       "wheel"
       "video"
-    ];
-    packages = with pkgs; [
     ];
   };
 
