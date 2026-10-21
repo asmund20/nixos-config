@@ -189,8 +189,16 @@ vim.lsp.config("rust_analyzer", {
     },
 })
 
+vim.lsp.enable("ruff")
+vim.lsp.config("ruff", {
+    cmd = { "ruff", "server" },
+    filetypes = { "python" },
+    root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml', '.git' },
+})
 
--- Typst help stuff
-local related_ns = vim.api.nvim_create_namespace("lsp_related_information")
-local related_cache = {}
-local related_targets = {}
+vim.lsp.enable("basedpyright")
+vim.lsp.config("basedpyright", {
+  cmd = { "basedpyright-langserver", "--stdio" },
+  filetypes = { "python" },
+  root_markers = { "pyproject.toml", "ruff.toml", ".ruff.toml", ".git" },
+})

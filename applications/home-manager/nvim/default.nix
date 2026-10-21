@@ -33,6 +33,9 @@
     typstyle
     websocat
     rust-analyzer
+
+    basedpyright
+    ruff
   ];
 
   # The actual config
