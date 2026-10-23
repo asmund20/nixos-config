@@ -73,6 +73,7 @@
       "wheel"
       "video"
     ];
+    shell = pkgs.nushell;
   };
 
   home-manager = {
@@ -130,12 +131,6 @@
   environment.shells = [
     pkgs.nushell
   ];
-
-  programs.bash.interactiveShellInit = ''
-    if ! [ "$TERM" = "dumb" ] && [ -z "$BASH_EXECUTION_STRING" ]; then
-      exec nu
-    fi
-  '';
 
   services.power-profiles-daemon.enable = true;
 

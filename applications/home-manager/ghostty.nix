@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   programs.ghostty = {
     enable = true;
@@ -9,6 +10,7 @@
       font-size = 13;
 
       copy-on-select = "clipboard";
+      command = "${pkgs.nushell}/bin/nu";
 
       keybind = [
         "ctrl+s>r=reload_config"
