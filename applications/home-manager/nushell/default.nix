@@ -8,6 +8,7 @@
     environmentVariables = {
       PROMPT_COMMAND_RIGHT = "";
     };
+    loadSessionVariables = false;
     extraConfig = builtins.readFile ./git-completions.nu + ''
       $env.CARGO_HOME = "~/.cargo"
       $env.path ++= [(echo $env.CARGO_HOME | path join "bin")]
