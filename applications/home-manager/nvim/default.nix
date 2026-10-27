@@ -18,6 +18,7 @@
       conform-nvim
       nvim-surround
       vim-lark-syntax
+      nvim-treesitter
       nvim-treesitter-parsers.nix
       nvim-treesitter-parsers.python
       nvim-treesitter-parsers.typst
@@ -33,9 +34,10 @@
     typstyle
     websocat
     rust-analyzer
-
     basedpyright
     ruff
+
+    ripgrep
   ];
 
   # The actual config
