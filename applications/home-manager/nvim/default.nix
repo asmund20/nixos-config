@@ -18,11 +18,15 @@
       conform-nvim
       nvim-surround
       vim-lark-syntax
-      nvim-treesitter
-      nvim-treesitter-parsers.nix
-      nvim-treesitter-parsers.python
-      nvim-treesitter-parsers.typst
-      nvim-treesitter-parsers.rust
+
+      (nvim-treesitter.withPlugins (
+        parsers: with parsers; [
+          nix
+          python
+          typst
+          rust
+        ]
+      ))
     ];
   };
 
