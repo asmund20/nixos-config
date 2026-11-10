@@ -83,8 +83,14 @@ let
     }
     {
       _args = [
+        (mkLua "mod .. \" + F\"")
+        (mkLua "hl.dsp.window.fullscreen({ action = \"toggle\" })")
+      ];
+    }
+    {
+      _args = [
         (mkLua "mod .. \" + V\"")
-        (mkLua "hl.dsp.window.float({ action = \"toggle\"})")
+        (mkLua "hl.dsp.window.float({ action = \"toggle\"} )")
       ];
     }
     {
