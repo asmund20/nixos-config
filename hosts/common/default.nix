@@ -126,6 +126,8 @@
     ghc
     ergogen
     rustc
+
+    kicad-small
   ];
 
   environment.shells = [
