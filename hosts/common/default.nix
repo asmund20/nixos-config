@@ -128,7 +128,7 @@
     rustc
 
     kicad-small
-    freecad
+    librecad
   ];
 
   environment.shells = [
