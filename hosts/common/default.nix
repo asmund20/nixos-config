@@ -129,6 +129,7 @@
 
     kicad-small
     librecad
+    freecad
   ];
 
   environment.shells = [
