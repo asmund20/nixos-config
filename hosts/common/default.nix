@@ -127,7 +127,7 @@
     ergogen
     rustc
 
-    kicad-small
+    kicad
     librecad
     freecad
   ];
